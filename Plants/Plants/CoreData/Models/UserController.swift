@@ -22,5 +22,14 @@ enum NetworkError: Error {
     case badAuth
     case otherError
     case badData
-    case noDecode 
+    case noDecode
+}
+
+class UserController{
+    private let baseURL = URL(string: "https://water-my-plants-1.herokuapp.com/api")!
+    private let signUpURL = URL(string: "https://water-my-plants-1.herokuapp.com/api/users/register" )!
+    
+    private let loginUserURL = URL(string: "https://water-my-plants-1.herokuapp.com/api/users/register/users/login")
+    
+    
 }
