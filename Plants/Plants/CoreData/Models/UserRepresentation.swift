@@ -11,8 +11,8 @@ struct UserRepresentation: Codable, Equatable {
     var username: String
     var password:String
     var phoneNumber:String
-    
+    var token:String
     enum CodingKeys: String, CodingKey {
-      case username, password,  phoneNumber = "phone_number"
+      case username, password, token,  phoneNumber = "phone_number"
     }
 }

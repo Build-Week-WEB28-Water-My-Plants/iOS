@@ -30,6 +30,7 @@
 		FB5DB48A23E8B76800FA369A /* PlantController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5DB48923E8B76800FA369A /* PlantController.swift */; };
 		FB5DB48C23E8BB2C00FA369A /* PlantRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5DB48B23E8BB2C00FA369A /* PlantRepresentation.swift */; };
 		FB5DB48E23E8C7BA00FA369A /* UserRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5DB48D23E8C7BA00FA369A /* UserRepresentation.swift */; };
+		FB5DB49023E8C97400FA369A /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5DB48F23E8C97400FA369A /* UserController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		FB5DB48923E8B76800FA369A /* PlantController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PlantController.swift; path = Plants/PlantController.swift; sourceTree = SOURCE_ROOT; };
 		FB5DB48B23E8BB2C00FA369A /* PlantRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantRepresentation.swift; sourceTree = "<group>"; };
 		FB5DB48D23E8C7BA00FA369A /* UserRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepresentation.swift; sourceTree = "<group>"; };
+		FB5DB48F23E8C97400FA369A /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserController.swift; path = Plants/CoreData/Models/UserController.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				FB5DB48923E8B76800FA369A /* PlantController.swift */,
+				FB5DB48F23E8C97400FA369A /* UserController.swift */,
 			);
 			path = "Model Controllers";
 			sourceTree = "<group>";
@@ -279,6 +282,7 @@
 			files = (
 				FA00568223E7B544004E5782 /* NewsController.swift in Sources */,
 				FAF9512F23E5F04700B41C3A /* HomeViewController.swift in Sources */,
+				FB5DB49023E8C97400FA369A /* UserController.swift in Sources */,
 				FA00568823E7C02A004E5782 /* NewsTableViewCell.swift in Sources */,
 				FA9BF16923E51C55005D8C91 /* Plant+Convenience.swift in Sources */,
 				FB5DB48E23E8C7BA00FA369A /* UserRepresentation.swift in Sources */,
