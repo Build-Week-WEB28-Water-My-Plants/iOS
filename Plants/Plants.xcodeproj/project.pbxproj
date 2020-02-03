@@ -31,6 +31,7 @@
 		FB5DB48C23E8BB2C00FA369A /* PlantRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5DB48B23E8BB2C00FA369A /* PlantRepresentation.swift */; };
 		FB5DB48E23E8C7BA00FA369A /* UserRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5DB48D23E8C7BA00FA369A /* UserRepresentation.swift */; };
 		FB5DB49023E8C97400FA369A /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5DB48F23E8C97400FA369A /* UserController.swift */; };
+		FB5DB49223E8CECB00FA369A /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5DB49123E8CECB00FA369A /* Token.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +61,7 @@
 		FB5DB48B23E8BB2C00FA369A /* PlantRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantRepresentation.swift; sourceTree = "<group>"; };
 		FB5DB48D23E8C7BA00FA369A /* UserRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepresentation.swift; sourceTree = "<group>"; };
 		FB5DB48F23E8C97400FA369A /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserController.swift; path = Plants/CoreData/Models/UserController.swift; sourceTree = SOURCE_ROOT; };
+		FB5DB49123E8CECB00FA369A /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Token.swift; path = Plants/CoreData/Models/Token.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +153,7 @@
 			children = (
 				FB5DB48923E8B76800FA369A /* PlantController.swift */,
 				FB5DB48F23E8C97400FA369A /* UserController.swift */,
+				FB5DB49123E8CECB00FA369A /* Token.swift */,
 			);
 			path = "Model Controllers";
 			sourceTree = "<group>";
@@ -295,6 +298,7 @@
 				FB5DB48C23E8BB2C00FA369A /* PlantRepresentation.swift in Sources */,
 				FA516C1B23E70AA300A573C7 /* PlantsTableViewController.swift in Sources */,
 				FB5DB48A23E8B76800FA369A /* PlantController.swift in Sources */,
+				FB5DB49223E8CECB00FA369A /* Token.swift in Sources */,
 				FA9BF14B23E51B34005D8C91 /* SceneDelegate.swift in Sources */,
 				FAF9513323E5F0AB00B41C3A /* PlantDetailViewController.swift in Sources */,
 				FA516C1D23E70B3B00A573C7 /* PlantsTableViewCell.swift in Sources */,
