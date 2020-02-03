@@ -8,6 +8,8 @@
 import UIKit
 
 class SettingsViewController: UIViewController {
+    
+    var legalText = "Using icons made by https://www.flaticon.com/authors/freepik"
 
     override func viewDidLoad() {
         super.viewDidLoad()
