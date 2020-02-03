@@ -14,7 +14,7 @@ class PlantsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        plants.append(Plant(species: "Sunflower", nickname: "", location: "Garden", image: nil, h2oFrequency: 12))
+//        plants.append(Plant(species: "Sunflower", nickname: "", location: "Garden", image: nil, h2oFrequency: 12))
     }
 
     // MARK: - Table view data source
