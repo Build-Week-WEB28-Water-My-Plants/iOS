@@ -10,4 +10,9 @@ import Foundation
 struct UserRepresentation: Codable, Equatable {
     var username: String
     var password:String
+    var phoneNumber:String
+    
+    enum CodingKeys: String, CodingKey {
+      case username, password,  phoneNumber = "phone_number"
+    }
 }
