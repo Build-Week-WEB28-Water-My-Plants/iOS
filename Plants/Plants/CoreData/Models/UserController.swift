@@ -135,5 +135,47 @@ class UserController{
         }.resume()
     }
     
+    func getUserPlants( completion: @escaping ([PlantRepresentation]?, Error?) -> Void) {
+        guard let token = authToken?.token else {
+            completion(nil, NSError())
+            return
+            
+           
+        }
+        
+         let userPlantsURL = baseURL.appendingPathComponent("/plants/user/\(userID?.id)")
+        
+        var request = URLRequest(url: userPlantsURL)
+              request.httpMethod = HTTPMethod.get.rawValue
+              request.addValue(token, forHTTPHeaderField: "Authorization")
+              URLSession.shared.dataTask(with: request) { data, _, error in
+                  if let _ = error {
+                      print("Error")
+                      completion(nil, error)
+                      return
+                  }
+                  guard let data = data else {
+                      print("Bad Data")
+                      return
+                  }
+                  let decoder = JSONDecoder()
+                  decoder.keyDecodingStrategy = .convertFromSnakeCase
+                  do {
+                      let userPlants = try decoder.decode([PlantRepresentation].self, from: data)
+                      completion(userPlants, nil)
+                      
+                  } catch {
+                      print("Error decoding")
+                      completion(nil, error)
+                  }
+              }.resume()
+          }
+        
+    }
+        
     
-}
+    
+    
+    
+    
+
