@@ -17,6 +17,8 @@
 		FA24C21A23E8FDB100085D2B /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA24C21623E8FDB100085D2B /* UserController.swift */; };
 		FA24C21B23E8FDB100085D2B /* ID.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA24C21723E8FDB100085D2B /* ID.swift */; };
 		FA24C21C23E8FDB100085D2B /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA24C21823E8FDB100085D2B /* Token.swift */; };
+		FA24C22023E9ED7200085D2B /* SpeciesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA24C21F23E9ED7200085D2B /* SpeciesController.swift */; };
+		FA24C22223E9EF4A00085D2B /* Species.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA24C22123E9EF4A00085D2B /* Species.swift */; };
 		FA516C1923E70A8F00A573C7 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA516C1823E70A8F00A573C7 /* SettingsTableViewController.swift */; };
 		FA516C1B23E70AA300A573C7 /* PlantsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA516C1A23E70AA300A573C7 /* PlantsTableViewController.swift */; };
 		FA516C1D23E70B3B00A573C7 /* PlantsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA516C1C23E70B3B00A573C7 /* PlantsTableViewCell.swift */; };
@@ -46,6 +48,8 @@
 		FA24C21623E8FDB100085D2B /* UserController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserController.swift; path = Plants/Models/UserController.swift; sourceTree = SOURCE_ROOT; };
 		FA24C21723E8FDB100085D2B /* ID.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ID.swift; path = Plants/Models/ID.swift; sourceTree = SOURCE_ROOT; };
 		FA24C21823E8FDB100085D2B /* Token.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Token.swift; path = Plants/Models/Token.swift; sourceTree = SOURCE_ROOT; };
+		FA24C21F23E9ED7200085D2B /* SpeciesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeciesController.swift; sourceTree = "<group>"; };
+		FA24C22123E9EF4A00085D2B /* Species.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Species.swift; sourceTree = "<group>"; };
 		FA516C1823E70A8F00A573C7 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		FA516C1A23E70AA300A573C7 /* PlantsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantsTableViewController.swift; sourceTree = "<group>"; };
 		FA516C1C23E70B3B00A573C7 /* PlantsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantsTableViewCell.swift; sourceTree = "<group>"; };
@@ -151,6 +155,8 @@
 				FA24C21823E8FDB100085D2B /* Token.swift */,
 				FA24C21623E8FDB100085D2B /* UserController.swift */,
 				FB5DB48923E8B76800FA369A /* PlantController.swift */,
+				FA24C21F23E9ED7200085D2B /* SpeciesController.swift */,
+				FA24C22123E9EF4A00085D2B /* Species.swift */,
 			);
 			path = "Model Controllers";
 			sourceTree = "<group>";
@@ -242,6 +248,7 @@
 				FAF9512F23E5F04700B41C3A /* HomeViewController.swift in Sources */,
 				FA00568823E7C02A004E5782 /* NewsTableViewCell.swift in Sources */,
 				FA24C20E23E8D09400085D2B /* LoginViewController.swift in Sources */,
+				FA24C22223E9EF4A00085D2B /* Species.swift in Sources */,
 				FA9BF16923E51C55005D8C91 /* Plant+Convenience.swift in Sources */,
 				FB5DB48E23E8C7BA00FA369A /* UserRepresentation.swift in Sources */,
 				FA9BF15523E51B34005D8C91 /* Plants.xcdatamodeld in Sources */,
@@ -249,6 +256,7 @@
 				FA9BF14923E51B34005D8C91 /* AppDelegate.swift in Sources */,
 				FA24C21123E8D71700085D2B /* News.swift in Sources */,
 				FA00568623E7BF8D004E5782 /* NewsTableViewController.swift in Sources */,
+				FA24C22023E9ED7200085D2B /* SpeciesController.swift in Sources */,
 				FB5DB48C23E8BB2C00FA369A /* PlantRepresentation.swift in Sources */,
 				FA24C21C23E8FDB100085D2B /* Token.swift in Sources */,
 				FA516C1B23E70AA300A573C7 /* PlantsTableViewController.swift in Sources */,
