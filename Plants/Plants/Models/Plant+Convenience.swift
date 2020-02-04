@@ -11,7 +11,7 @@ import CoreData
 extension Plant {
      
     var plantRepresentation: PlantRepresentation? {
-        guard let nickname = nickname, let id: Double, let location = location, let image = image, let speciesId: Double = 0.0 else { return nil }
+        guard let nickname = nickname, let id: Double = 0.0, let location = location, let image = image, let speciesId: Double = 0.0 else { return nil }
             
         return PlantRepresentation(id: id, image: image, nickname: nickname, speciesId: speciesId, h2oFrequency: h2oFrequency, location: location)
         

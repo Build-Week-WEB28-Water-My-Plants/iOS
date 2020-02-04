@@ -27,8 +27,8 @@ class UserController{
     private let baseURL = URL(string: "https://water-my-plants-1.herokuapp.com/api")!
     private let signUpURL = URL(string: "https://water-my-plants-1.herokuapp.com/api/users/register" )!
     
-    private let loginUserURL = URL(string: "https://water-my-plants-1.herokuapp.com/api/users/register/users/login")!
-    
+    private let loginUserURL = URL(string: "https://water-my-plants-1.herokuapp.com/api/users/login")!
+     //
     static var shared = UserController()
     
     var authToken:Token?
@@ -53,7 +53,7 @@ class UserController{
         }
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let response = response as? HTTPURLResponse,
-                response.statusCode != 200 {
+                response.statusCode != 201 {
                 completion(NSError(domain: "", code: response.statusCode, userInfo:nil))
                 return
             }
@@ -120,10 +120,14 @@ class UserController{
             }
             
             let decoder = JSONDecoder()
-           // decoder.keyDecodingStrategy = .convertFromSnakeCase
+           
             do {
                 self.authToken = try decoder.decode(Token.self, from: data)
                 print("Success logging in your token is: \(String(describing: self.authToken?.token))")
+                
+               
+                
+                
                 
             } catch {
                 print("Error decoding login user object: \(error)")

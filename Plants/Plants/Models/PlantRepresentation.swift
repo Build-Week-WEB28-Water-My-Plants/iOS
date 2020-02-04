@@ -9,12 +9,12 @@ import Foundation
 import UIKit 
 struct PlantRepresentation: Equatable, Codable {
     
-    let id: Double
+    var id: Double
     var image: Data
-    let nickname: String
-    let speciesId: Double
-    let h2oFrequency: Double?
-    let location: String
+    var nickname: String
+    var speciesId: Double
+    var h2oFrequency: Double?
+    var location: String
     
     init(id: Double, image: Data, nickname: String, speciesId: Double, h2oFrequency: Double?, location: String) {
         

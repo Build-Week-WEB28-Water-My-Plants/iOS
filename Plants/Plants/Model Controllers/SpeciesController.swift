@@ -17,7 +17,7 @@ class SpeciesController {
         
         let requestURL = baseURL.appendingPathComponent("/plants/species/list/\(id)")
         var request = URLRequest(url: requestURL)
-        request.addValue(UserController.shared.authToken, forHTTPHeaderField: "Authorization")
+//        request.addValue(String(UserController.shared.authToken), forHTTPHeaderField: "Authorization")
         var species: Species?
         URLSession.shared.dataTask(with: request) { (data, _, error) in
             if let error = error { completion(error); return }
@@ -40,7 +40,7 @@ class SpeciesController {
         let requestURL = baseURL.appendingPathComponent("/plants/species/")
         var request = URLRequest(url: requestURL)
         request.httpMethod = "POST"
-        request.addValue(UserController.shared.authToken, forHTTPHeaderField: "Authorization")
+//        request.addValue(UserController.shared.authToken, forHTTPHeaderField: "Authorization")
         let species = Species(h2oFrequency: h2oFrequency, commonName: String.random(length: 20), scientificName: String.random(length: 20))
 
         do {
@@ -63,7 +63,7 @@ class SpeciesController {
         let requestURL = baseURL.appendingPathComponent("/plants/species/\(id)")
         var request = URLRequest(url: requestURL)
         request.httpMethod = "PUT"
-        request.addValue(UserController.shared.authToken, forHTTPHeaderField: "Authorization")
+//        request.addValue(String(UserController?.shared.authToken), forHTTPHeaderField: "Authorization")
         let species = Species(h2oFrequency: h2oFrequency, commonName: String.random(length: 20), scientificName: String.random(length: 20))
         do {
             let encoder = JSONEncoder()
