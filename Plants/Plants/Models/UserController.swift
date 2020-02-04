@@ -13,8 +13,6 @@ enum HTTPMethod: String {
     case post = "POST"
     case put = "PUT"
     case delete = "DELETE"
-    
-    
 }
 
 enum NetworkError: Error {
@@ -142,10 +140,11 @@ class UserController{
             DispatchQueue.main.async { completion(nil, NSError()) }
             return
             
-           
         }
         
-         let userPlantsURL = baseURL.appendingPathComponent("/plants/user/\(userID?.id)")
+        guard let userId = userID?.id else { return }
+        
+        let userPlantsURL = baseURL.appendingPathComponent("/plants/user/\(userId)")
         
         var request = URLRequest(url: userPlantsURL)
               request.httpMethod = HTTPMethod.get.rawValue
@@ -172,7 +171,6 @@ class UserController{
                   }
               }.resume()
           }
-        
     }
         
     
