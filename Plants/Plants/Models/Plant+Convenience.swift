@@ -11,30 +11,33 @@ import CoreData
 extension Plant {
      
     var plantRepresentation: PlantRepresentation? {
-        guard let species = species, let nickname = nickname, let id: Double = 0.0, let location = location, let image = image else { return nil }
+        guard let nickname = nickname, let id: Double, let location = location, let image = image, let speciesId: Double = 0.0 else { return nil }
             
-        return PlantRepresentation(imageURL: "", id: id, nickname: nickname, species: species, h2oFrequency: 0.0, location: location)
+        return PlantRepresentation(id: id, image: image, nickname: nickname, speciesId: speciesId, h2oFrequency: h2oFrequency, location: location)
         
     }
     
-    convenience init(species: String, nickname: String, location: String, image: String, id: Double, h2oFrequency: Double, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
+    convenience init(speciesId: Double, nickname: String, location: String, image: Data, id: Double, h2oFrequency: Double?, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
+        
         self.init(context: context)
-        self.species = species
+        self.speciesId = speciesId
         self.nickname = nickname
         self.location = location
         self.image = image
         self.id = id
+        guard let h2oFrequency = h2oFrequency else { return }
         self.h2oFrequency = h2oFrequency
     }
     
     @discardableResult convenience init?(plantRepresentation: PlantRepresentation, context: NSManagedObjectContext) {
         
-        self.init(species: plantRepresentation.species,
+        self.init(speciesId: plantRepresentation.speciesId,
                   nickname: plantRepresentation.nickname,
                   location: plantRepresentation.location,
-                  image: plantRepresentation.imageURL,
+                  image: plantRepresentation.image,
                   id: plantRepresentation.id,
                   h2oFrequency: plantRepresentation.h2oFrequency,
                   context: context)
+        
     }
 }

@@ -9,7 +9,7 @@ import UIKit
 
 class PlantsTableViewController: UITableViewController {
     
-    var plants: [Plant] = [Plant(species: "Sunflower", nickname: "Sunny", location: "Garden", image: "", id: 33.0, h2oFrequency: 7)]
+    var plants: [Plant] = [Plant(speciesId: 1, nickname: "Sunny", location: "Garden", image: Data(), id: 33.0, h2oFrequency: 7)]
      var plantController: PlantController?
 
     override func viewDidLoad() {
@@ -24,8 +24,8 @@ class PlantsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PlantCell", for: indexPath) as! PlantsTableViewCell
         let plant = plants[indexPath.row]
-        if plant.nickname?.isEmpty ?? true { cell.nameLabel.text = plant.species }
-        else { cell.nameLabel.text = "\(plant.nickname ?? "") (\(plant.species ?? ""))" }
+        if plant.nickname?.isEmpty ?? true { cell.nameLabel.text = plant.nickname }
+        else { cell.nameLabel.text = "\(plant.nickname ?? "") (\(plant.speciesId))" }
         cell.timeLabel.text = "Status: Next Watering tomorrow"
         return cell
     }

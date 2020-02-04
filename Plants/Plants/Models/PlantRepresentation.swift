@@ -10,20 +10,18 @@ import UIKit
 struct PlantRepresentation: Equatable, Codable {
     
     let id: Double
-    var image: UIImage {
-        return UIImage(named: imageURL) ?? UIImage()
-    }
+    var image: Data
     let nickname: String
-    let species: String
-    let h2oFrequency: Double 
+    let speciesId: Double
+    let h2oFrequency: Double?
     let location: String
-    var imageURL: String
     
-    init(imageURL: String, id: Double, nickname: String, species: String, h2oFrequency: Double, location: String) {
-        self.imageURL = imageURL
+    init(id: Double, image: Data, nickname: String, speciesId: Double, h2oFrequency: Double?, location: String) {
+        
         self.id = id
+        self.image = image
         self.nickname = nickname
-        self.species = species
+        self.speciesId = speciesId
         self.h2oFrequency = h2oFrequency
         self.location = location
     }

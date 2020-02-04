@@ -10,9 +10,7 @@ import CoreData
 
 class PlantController {
     
-  var myPlants = [PlantRepresentation]() 
-}
-
+  var myPlants = [PlantRepresentation]()
 
 //Mark: - Set Functions
 
@@ -27,3 +25,4 @@ class PlantController {
 // Mark: -Crud Functions
 
 
+}

@@ -23,7 +23,7 @@ class PlantDetailViewController: UIViewController {
         super.viewDidLoad()
         guard let plant = plant else { return }
         nameField.text = plant.nickname
-        speciesField.text = plant.species
+        //speciesField.text = plant.species
         locationField.text = plant.location
         waterFreqField.text = String(plant.h2oFrequency)
     }
