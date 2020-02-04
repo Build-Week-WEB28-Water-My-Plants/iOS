@@ -476,7 +476,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="KbO-mD-78X">
-                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="Vm2-6s-plg"/>
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="Vm2-6s-plg">
+                            <connections>
+                                <action selector="done:" destination="rWD-Cj-B32" id="VmV-zu-GMq"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="name" destination="EkQ-fO-fnO" id="iTq-8m-5wD"/>
