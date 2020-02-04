@@ -16,9 +16,12 @@ class HomeViewController: UIViewController {
     
     var profileImage: UIImage?
     
+    static var authenticated = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         formatViews()
+        if !HomeViewController.authenticated { performSegue(withIdentifier: "Login", sender: nil) }
     }
     
     override func viewWillAppear(_ animated: Bool) {

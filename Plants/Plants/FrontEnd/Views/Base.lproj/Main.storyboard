@@ -10,7 +10,9 @@
         <!--Login-->
         <scene sceneID="F31-Uq-Vw6">
             <objects>
-                <viewControllerPlaceholder storyboardName="Login" id="Lzh-YH-GwI" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="Login" id="Lzh-YH-GwI" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Xcj-6K-w4v"/>
+                </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OFb-QQ-ysx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1830" y="-421"/>
@@ -39,41 +41,32 @@
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mtb-Pe-mqt">
-                                            <rect key="frame" x="335" y="10" width="29" height="16"/>
+                                            <rect key="frame" x="330.5" y="64.5" width="28.5" height="16"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZqA-Rm-Ndi">
-                                            <rect key="frame" x="119" y="15" width="41.5" height="26.5"/>
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                            <rect key="frame" x="119" y="15" width="245" height="20.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" text="Author" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GH6-F1-oEO">
-                                            <rect key="frame" x="323" y="64.5" width="41" height="16"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                            <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="Mtb-Pe-mqt" firstAttribute="top" secondItem="zTm-BZ-UhT" secondAttribute="top" constant="10" id="2Xv-Ai-59d"/>
-                                        <constraint firstItem="GH6-F1-oEO" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="3lm-oO-H4E" secondAttribute="trailing" constant="10" id="61f-ad-zCW"/>
+                                        <constraint firstAttribute="trailing" secondItem="ZqA-Rm-Ndi" secondAttribute="trailing" constant="10" id="7SX-Ky-YrX"/>
+                                        <constraint firstItem="Mtb-Pe-mqt" firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="ZqA-Rm-Ndi" secondAttribute="bottom" constant="10" id="7T4-Jo-PyP"/>
+                                        <constraint firstAttribute="bottom" secondItem="Mtb-Pe-mqt" secondAttribute="bottom" constant="10" id="A0Y-DO-AOb"/>
                                         <constraint firstItem="3lm-oO-H4E" firstAttribute="top" secondItem="zTm-BZ-UhT" secondAttribute="top" constant="10" id="Bvh-cK-Swa"/>
-                                        <constraint firstItem="GH6-F1-oEO" firstAttribute="top" relation="greaterThanOrEqual" secondItem="ZqA-Rm-Ndi" secondAttribute="bottom" constant="5" id="Ef0-5M-h6u"/>
-                                        <constraint firstAttribute="trailing" secondItem="GH6-F1-oEO" secondAttribute="trailing" constant="10" id="MeY-CH-m4e"/>
                                         <constraint firstItem="3lm-oO-H4E" firstAttribute="leading" secondItem="zTm-BZ-UhT" secondAttribute="leading" constant="10" id="NBM-Uo-ESJ"/>
-                                        <constraint firstAttribute="trailing" secondItem="Mtb-Pe-mqt" secondAttribute="trailing" constant="10" id="RfD-nQ-02V"/>
+                                        <constraint firstAttribute="trailing" secondItem="Mtb-Pe-mqt" secondAttribute="trailing" constant="15" id="RfD-nQ-02V"/>
                                         <constraint firstItem="ZqA-Rm-Ndi" firstAttribute="leading" secondItem="3lm-oO-H4E" secondAttribute="trailing" constant="15" id="TOa-Dv-jun"/>
-                                        <constraint firstItem="Mtb-Pe-mqt" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ZqA-Rm-Ndi" secondAttribute="trailing" constant="10" id="lw9-em-pZ4"/>
+                                        <constraint firstItem="Mtb-Pe-mqt" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="3lm-oO-H4E" secondAttribute="trailing" constant="10" id="a3b-1W-rIZ"/>
                                         <constraint firstItem="ZqA-Rm-Ndi" firstAttribute="top" secondItem="zTm-BZ-UhT" secondAttribute="top" constant="15" id="uXP-t0-m3e"/>
-                                        <constraint firstAttribute="bottom" secondItem="GH6-F1-oEO" secondAttribute="bottom" constant="10" id="ua9-ib-pdS"/>
                                         <constraint firstAttribute="bottom" secondItem="3lm-oO-H4E" secondAttribute="bottom" constant="10" id="zqL-AI-SJr"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="newsAuthor" destination="GH6-F1-oEO" id="oIg-nd-qaS"/>
                                     <outlet property="newsDate" destination="Mtb-Pe-mqt" id="jvB-es-nBU"/>
                                     <outlet property="newsImage" destination="3lm-oO-H4E" id="FTS-Ys-nuS"/>
                                     <outlet property="newsTitle" destination="ZqA-Rm-Ndi" id="V6p-jH-oH1"/>
@@ -199,7 +192,7 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="All your plants are happy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2po-tk-KWq">
                                                 <rect key="frame" x="0.0" y="0.0" width="342" height="36"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
-                                                <color key="textColor" red="0.47823891237987703" green="0.84619899611398963" blue="0.27658137796668264" alpha="0.356018926056338" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <color key="textColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Next watering day: tomorrow" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QCp-aE-NvH">
@@ -342,6 +335,7 @@
                         <outlet property="secondView" destination="yTq-n9-J3k" id="fRm-Lk-tgu"/>
                         <outlet property="settingsButton" destination="CpS-LI-cxt" id="pd5-C8-8ez"/>
                         <outlet property="statusText" destination="2po-tk-KWq" id="tzT-Xd-q7v"/>
+                        <segue destination="Lzh-YH-GwI" kind="presentation" identifier="Login" animates="NO" modalPresentationStyle="fullScreen" id="jNp-Ch-tF2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9lq-tC-VfV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
