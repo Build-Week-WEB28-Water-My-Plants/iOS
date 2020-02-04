@@ -8,8 +8,6 @@
 import Foundation
 import CoreData
 
-import Foundation
-import CoreData
 extension Plant {
      
     var plantRepresentation: PlantRepresentation? {

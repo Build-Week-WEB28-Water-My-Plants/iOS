@@ -14,7 +14,6 @@
 		FA00568E23E8A9C6004E5782 /* AuthField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA00568D23E8A9C6004E5782 /* AuthField.swift */; };
 		FA24C20E23E8D09400085D2B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA24C20D23E8D09400085D2B /* LoginViewController.swift */; };
 		FA24C21123E8D71700085D2B /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA24C21023E8D71700085D2B /* News.swift */; };
-		FA24C21923E8FDB100085D2B /* Plants.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FA24C21423E8FDB100085D2B /* Plants.xcdatamodeld */; };
 		FA24C21A23E8FDB100085D2B /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA24C21623E8FDB100085D2B /* UserController.swift */; };
 		FA24C21B23E8FDB100085D2B /* ID.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA24C21723E8FDB100085D2B /* ID.swift */; };
 		FA24C21C23E8FDB100085D2B /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA24C21823E8FDB100085D2B /* Token.swift */; };
@@ -46,7 +45,6 @@
 		FA00568D23E8A9C6004E5782 /* AuthField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthField.swift; sourceTree = "<group>"; };
 		FA24C20D23E8D09400085D2B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		FA24C21023E8D71700085D2B /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
-		FA24C21523E8FDB100085D2B /* Plants.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Plants.xcdatamodel; sourceTree = "<group>"; };
 		FA24C21623E8FDB100085D2B /* UserController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserController.swift; path = Plants/Models/UserController.swift; sourceTree = SOURCE_ROOT; };
 		FA24C21723E8FDB100085D2B /* ID.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ID.swift; path = Plants/Models/ID.swift; sourceTree = SOURCE_ROOT; };
 		FA24C21823E8FDB100085D2B /* Token.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Token.swift; path = Plants/Models/Token.swift; sourceTree = SOURCE_ROOT; };
@@ -156,7 +154,6 @@
 			isa = PBXGroup;
 			children = (
 				FA24C21723E8FDB100085D2B /* ID.swift */,
-				FA24C21423E8FDB100085D2B /* Plants.xcdatamodeld */,
 				FA24C21823E8FDB100085D2B /* Token.swift */,
 				FA24C21623E8FDB100085D2B /* UserController.swift */,
 				FB5DB48923E8B76800FA369A /* PlantController.swift */,
@@ -268,7 +265,6 @@
 				FA24C21B23E8FDB100085D2B /* ID.swift in Sources */,
 				FAF9513323E5F0AB00B41C3A /* PlantDetailViewController.swift in Sources */,
 				FA516C1D23E70B3B00A573C7 /* PlantsTableViewCell.swift in Sources */,
-				FA24C21923E8FDB100085D2B /* Plants.xcdatamodeld in Sources */,
 				FAF9513523E5F0D600B41C3A /* SettingsViewController.swift in Sources */,
 				FA516C1923E70A8F00A573C7 /* SettingsTableViewController.swift in Sources */,
 				FA00568A23E8A1FD004E5782 /* AuthButton1.swift in Sources */,
@@ -471,17 +467,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		FA24C21423E8FDB100085D2B /* Plants.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				FA24C21523E8FDB100085D2B /* Plants.xcdatamodel */,
-			);
-			currentVersion = FA24C21523E8FDB100085D2B /* Plants.xcdatamodel */;
-			name = Plants.xcdatamodeld;
-			path = ../Models/Plants.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
 		FA9BF15323E51B34005D8C91 /* Plants.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
