@@ -8,16 +8,19 @@
 import UIKit
 
 class HomeViewController: UIViewController {
+    
+    // MARK: - IBOutlets
     @IBOutlet weak var firstView: UIView!
     @IBOutlet weak var secondView: UIView!
     @IBOutlet weak var manageButton: UIView!
     @IBOutlet weak var settingsButton: UIButton!
     @IBOutlet weak var statusText: UILabel!
     
+    // MARK: - Properties
     var profileImage: UIImage?
+    static var authenticated = false
     
-    static var authenticated = true
-    
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         formatViews()
@@ -29,6 +32,7 @@ class HomeViewController: UIViewController {
         settingsButton.isHidden = false
     }
     
+    // MARK: - Private Methods
     private func formatViews() {
         //Settings
         if let profileImage = profileImage { settingsButton.setImage(profileImage, for: .normal) }
@@ -46,10 +50,12 @@ class HomeViewController: UIViewController {
         secondView.layer.cornerRadius = 10
     }
     
+    // MARK: - IBActions
+    @IBAction func openNews(_ sender: Any) {
+        UIApplication.shared.open(URL(string: "https://www.theguardian.com/lifeandstyle/gardens/")!)
+    }
     
      // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "PlantsSegue" {
             settingsButton.isHidden = true

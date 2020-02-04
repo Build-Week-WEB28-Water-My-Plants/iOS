@@ -1,5 +1,5 @@
 //
-//  AuthButton1.swift
+//  CustomButton.swift
 //  Plants
 //
 //  Created by Alexander Supe on 03.02.20.
@@ -8,7 +8,7 @@
 import UIKit
 
 @IBDesignable
-class AuthButton1: UIButton {
+class CustomButton: UIButton {
     
     @IBInspectable
     var cornerRadius: CGFloat = 10 { didSet { self.layer.cornerRadius = self.cornerRadius } }

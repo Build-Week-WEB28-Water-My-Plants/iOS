@@ -31,6 +31,8 @@ class UserController{
     
     private let loginUserURL = URL(string: "https://water-my-plants-1.herokuapp.com/api/users/register/users/login")!
     
+    static var shared = UserController()
+    
     var authToken:Token?
     var userID: ID?
     
@@ -59,11 +61,11 @@ class UserController{
             }
             
             if let error = error {
-                completion(error)
+                DispatchQueue.main.async { completion(error) }
                 return
             }
             guard let data = data else {
-                completion(NSError())
+                DispatchQueue.main.async { completion(NSError()) }
                 return
             }
             
@@ -79,7 +81,7 @@ class UserController{
                         return
                     }
                     
-                    completion(nil)
+            DispatchQueue.main.async { completion(nil) }
                 }.resume()
             
             
@@ -105,17 +107,17 @@ class UserController{
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let response = response as? HTTPURLResponse,
                 response.statusCode != 200 {
-                completion(NSError(domain: "", code: response.statusCode, userInfo:nil))
+                DispatchQueue.main.async { completion(NSError(domain: "", code: response.statusCode, userInfo:nil)) }
                 return
             }
             
             if let error = error {
-                completion(error)
+                DispatchQueue.main.async { completion(error) }
                 return
             }
             
             guard let data = data else {
-                completion(NSError())
+                DispatchQueue.main.async { completion(NSError()) }
                 return
             }
             
@@ -127,17 +129,17 @@ class UserController{
                 
             } catch {
                 print("Error decoding login user object: \(error)")
-                completion(error)
+                DispatchQueue.main.async { completion(error) }
                 return
             }
             
-            completion(nil)
+            DispatchQueue.main.async { completion(nil) }
         }.resume()
     }
     
     func getUserPlants( completion: @escaping ([PlantRepresentation]?, Error?) -> Void) {
         guard let token = authToken?.token else {
-            completion(nil, NSError())
+            DispatchQueue.main.async { completion(nil, NSError()) }
             return
             
            
@@ -151,7 +153,7 @@ class UserController{
               URLSession.shared.dataTask(with: request) { data, _, error in
                   if let _ = error {
                       print("Error")
-                      completion(nil, error)
+                    DispatchQueue.main.async { completion(nil, error) }
                       return
                   }
                   guard let data = data else {
@@ -162,11 +164,11 @@ class UserController{
                   decoder.keyDecodingStrategy = .convertFromSnakeCase
                   do {
                       let userPlants = try decoder.decode([PlantRepresentation].self, from: data)
-                      completion(userPlants, nil)
+                    DispatchQueue.main.async { completion(userPlants, nil) }
                       
                   } catch {
                       print("Error decoding")
-                      completion(nil, error)
+                    DispatchQueue.main.async { completion(nil, error) }
                   }
               }.resume()
           }

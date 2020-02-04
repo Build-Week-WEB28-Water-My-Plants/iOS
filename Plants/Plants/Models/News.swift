@@ -12,10 +12,7 @@ struct Item {
     var link: String?
     var description: String?
     var pubDate: Date?
-    var media: [Media]?
+    var url: URL?
+    var image: Data?
 }
 
-struct Media {
-    var width: Int?
-    var url: URL?
-}
