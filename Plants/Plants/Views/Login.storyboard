@@ -195,8 +195,11 @@
                             </subviews>
                         </stackView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gOO-er-JBw">
-                            <rect key="frame" x="127.5" y="841" width="159" height="30"/>
+                            <rect key="frame" x="127.5" y="807" width="159" height="30"/>
                             <state key="normal" title="Continue without Login"/>
+                            <connections>
+                                <action selector="ckLogin:" destination="pfJ-r3-DWd" eventType="touchUpInside" id="EmT-du-NRw"/>
+                            </connections>
                         </button>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="qph-o8-JpT">
                             <rect key="frame" x="40" y="372.5" width="334" height="151"/>
@@ -265,7 +268,7 @@
                             </subviews>
                         </stackView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Igx-x4-vUw" customClass="CustomButton" customModule="Plants" customModuleProvider="target">
-                            <rect key="frame" x="40" y="773" width="334" height="50"/>
+                            <rect key="frame" x="40" y="739" width="334" height="50"/>
                             <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="50" id="CoG-yc-IFr"/>
@@ -294,7 +297,7 @@
                         <constraint firstItem="Igx-x4-vUw" firstAttribute="leading" secondItem="6s4-53-Zfy" secondAttribute="leading" constant="40" id="azM-TW-9OH"/>
                         <constraint firstItem="6s4-53-Zfy" firstAttribute="trailing" secondItem="LVk-cl-vKb" secondAttribute="trailing" constant="40" id="cx7-5y-awg"/>
                         <constraint firstItem="qph-o8-JpT" firstAttribute="leading" secondItem="6s4-53-Zfy" secondAttribute="leading" constant="40" id="fzB-Rc-R4c"/>
-                        <constraint firstAttribute="bottom" secondItem="gOO-er-JBw" secondAttribute="bottom" constant="25" id="i4r-0J-EF0"/>
+                        <constraint firstItem="6s4-53-Zfy" firstAttribute="bottom" secondItem="gOO-er-JBw" secondAttribute="bottom" constant="25" id="i4r-0J-EF0"/>
                         <constraint firstItem="6s4-53-Zfy" firstAttribute="trailing" secondItem="Igx-x4-vUw" secondAttribute="trailing" constant="40" id="mIw-ih-FJj"/>
                         <constraint firstItem="LVk-cl-vKb" firstAttribute="leading" secondItem="6s4-53-Zfy" secondAttribute="leading" constant="40" id="osH-43-FXV"/>
                     </constraints>
@@ -318,7 +321,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D7l-Xz-Oyk" customClass="CustomButton" customModule="Plants" customModuleProvider="target">
-                                <rect key="frame" x="40" y="738" width="334" height="50"/>
+                                <rect key="frame" x="40" y="739" width="334" height="50"/>
                                 <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="zLH-gA-lKy"/>
@@ -355,7 +358,7 @@
                             <constraint firstItem="xtS-tL-WPq" firstAttribute="top" secondItem="6ak-Ed-mlQ" secondAttribute="bottom" constant="35" id="2Fd-dy-zcd"/>
                             <constraint firstItem="xtS-tL-WPq" firstAttribute="leading" secondItem="WCF-zQ-LQO" secondAttribute="leading" constant="60" id="7Br-HY-Zbd"/>
                             <constraint firstItem="WCF-zQ-LQO" firstAttribute="trailing" secondItem="D7l-Xz-Oyk" secondAttribute="trailing" constant="40" id="7sh-Gp-k3W"/>
-                            <constraint firstItem="0dz-Fb-pYg" firstAttribute="top" secondItem="D7l-Xz-Oyk" secondAttribute="bottom" constant="19" id="BRS-L8-Uu2"/>
+                            <constraint firstItem="0dz-Fb-pYg" firstAttribute="top" secondItem="D7l-Xz-Oyk" secondAttribute="bottom" constant="18" id="BRS-L8-Uu2"/>
                             <constraint firstItem="0dz-Fb-pYg" firstAttribute="centerX" secondItem="fQA-fQ-Xij" secondAttribute="centerX" id="DDN-sY-Fry"/>
                             <constraint firstItem="6ak-Ed-mlQ" firstAttribute="leading" secondItem="WCF-zQ-LQO" secondAttribute="leading" constant="40" id="Qbb-zZ-vna"/>
                             <constraint firstItem="WCF-zQ-LQO" firstAttribute="bottom" secondItem="0dz-Fb-pYg" secondAttribute="bottom" constant="25" id="VGL-Gx-1jJ"/>

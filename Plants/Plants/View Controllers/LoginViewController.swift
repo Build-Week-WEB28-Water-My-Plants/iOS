@@ -63,7 +63,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBAction func ckLogin(_ sender: Any) {
-        
+        self.performSegue(withIdentifier: "FinishSegue", sender: nil)
+        HomeViewController.authenticated = true
     }
     
     @IBAction func segmentChanged(_ sender: Any) {
