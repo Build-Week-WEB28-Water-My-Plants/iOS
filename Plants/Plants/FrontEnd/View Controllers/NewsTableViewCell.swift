@@ -12,6 +12,5 @@ class NewsTableViewCell: UITableViewCell {
     @IBOutlet weak var newsImage: UIImageView!
     @IBOutlet weak var newsTitle: UILabel!
     @IBOutlet weak var newsDate: UILabel!
-    @IBOutlet weak var newsAuthor: UILabel!
     
 }

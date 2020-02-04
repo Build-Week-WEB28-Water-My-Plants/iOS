@@ -7,38 +7,40 @@
 
 import UIKit
 
-class NewsTableViewController: UITableViewController {
-    
-    var newsController = NewsController()
+class NewsTableViewController: UITableViewController, XMLParserDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        newsController.getNews { (_) in
-            self.newsController.getImages { (_) in
-                self.reloadCells()
-            }
-        }
+        reloadCells()
     }
     
     func reloadCells() {
+        if let path = URL(string: "https://www.theguardian.com/lifeandstyle/gardens/rss"){
+            if let parser = XMLParser(contentsOf: path) {
+                parser.delegate = self
+                parser.parse()
+            }
+        }
         tableView.reloadData()
     }
 
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return newsController.news.count
+        return items.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NewsCell", for: indexPath) as! NewsTableViewCell
-        let news = newsController.news[indexPath.row]
-        cell.newsTitle.text = news.title
-        cell.newsDate.text = news.pubDate
-        cell.newsAuthor.text = news.author
-//        let queue = DispatchQueue(label: "Image")
-//        if let image = news.image { cell.newsImage.image = UIImage(data: image)}
-//        else { cell.newsImage.image = UIImage(systemName: "rectangle.fill"); cell.newsImage.tintColor = .gray }
-        if let url = URL(string: news.enclosure?.link ?? "") { cell.newsImage.load(url: url) }
+        let item = items[indexPath.row]
+        cell.newsTitle.text = item.title
+        
+        let dateFormatter = RelativeDateTimeFormatter()
+        dateFormatter.dateTimeStyle = .named
+        if let date = item.pubDate { cell.newsDate.text = dateFormatter.localizedString(for: date, relativeTo: Date()) }
+        if let media = item.media {
+            if let url = media[0].url { cell.newsImage.load(url: url) }
+            else { cell.newsImage.image = UIImage(systemName: "rectangle.fill")}
+        }
         return cell
     }
 
@@ -86,6 +88,48 @@ class NewsTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    var items: [Item] = []
+    var elementName = String()
+    var titleString = String()
+    var dateString = String()
+    var imageString = String()
+    
+    
+    func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
+        if elementName == "item" {
+            titleString = String()
+            dateString = String()
+            imageString = String()
+        }
+        self.elementName = elementName
+    }
+    
+    func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
+        if elementName == "item" {
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "E, dd MMM yyyy HH:mm:ss zzz"
+            
+            let date = dateFormatter.date(from: dateString)
+            let item = Item(title: titleString, link: nil, description: nil, pubDate: date, media: [Media(width: nil, url: URL(string: imageString))])
+            items.append(item)
+        }
+    }
+    
+    func parser(_ parser: XMLParser, foundCharacters string: String) {
+        let data = string.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+        
+        if !data.isEmpty {
+            if self.elementName == "title" {
+                titleString += data
+            } else if self.elementName == "pubDate" {
+                dateString += data
+            } else if self.elementName == "url" {
+                imageString += data
+            }
+        }
+    }
 
 }
 
@@ -93,11 +137,9 @@ extension UIImageView {
     func load(url: URL) {
         DispatchQueue.global().async { [weak self] in
             if let data = try? Data(contentsOf: url) {
-                if let image = UIImage(data: data) {
-                    DispatchQueue.main.async {
-                        self?.image = image
-                    }
-                }
+                if data.isEmpty { DispatchQueue.main.async { self?.image = UIImage(systemName: "rectangle.fill")
+                } }
+                else { if let image = UIImage(data: data) { DispatchQueue.main.async { self?.image = image } } }
             }
         }
     }
