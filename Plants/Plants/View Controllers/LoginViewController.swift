@@ -30,7 +30,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBAction func login(_ sender: Any) {
         if segment.selectedSegmentIndex == 0 {
             guard let username = username.text, let password = password.text else { return }
-            UserController.shared.signUp(with: UserRepresentation(username: username, password: password)) { (error) in
+            UserController.shared.logIn(with: UserRepresentation(username: username, password: password)) { (error) in
                 DispatchQueue.main.async {
                     if !self.isError(error) {
                         DispatchQueue.main.async {
