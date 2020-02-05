@@ -37,6 +37,9 @@ class HomeViewController: UIViewController {
         PlantController.shared.fetchPlantFromServer {error in
             NSLog("\(String(describing: error))")
         }
+        let center = UNUserNotificationCenter.current()
+        center.requestAuthorization(options: [.alert, .sound]) { granted, error in
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

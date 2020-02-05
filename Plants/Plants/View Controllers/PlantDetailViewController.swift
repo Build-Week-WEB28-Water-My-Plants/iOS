@@ -67,6 +67,8 @@ class PlantDetailViewController: UIViewController, UITextFieldDelegate, UIImageP
         editButton.tintColor = .systemBlue
         saveButton.setTitle("Watered", for: .normal)
         saveButton.backgroundColor = .systemGreen
+        imageButton.isHidden = true
+        deleteButton.isHidden = true
     }
     
     @IBAction func edit(_ sender: Any) {
@@ -136,6 +138,7 @@ class PlantDetailViewController: UIViewController, UITextFieldDelegate, UIImageP
             //Notify User
             return }
         currentlyEditing = false
+        NotificationHelper.shared.scheduleNotification(for: name, in: Double(freq) ?? 7)
         viewMode()
         if creating{
             newPlantController.create(newPlant: NewPlant(nickname: name, id: UUID(), wateredDate: Date(), image: Data(), location: loc, h2oFrequency: Double(freq) ?? 7)) {_ in
