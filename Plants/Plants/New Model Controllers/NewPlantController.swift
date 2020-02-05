@@ -76,14 +76,7 @@ class NewPlantController {
     func update(_ newPlant: NewPlant, nickname: String?, location: String?, wateredDate: Date?, image: Data?, h2oFrequency: Double?) {
         let nickname = nickname ?? newPlant.nickname; let id = newPlant.id; let location = location ?? newPlant.location; let wateredDate = wateredDate ?? newPlant.wateredDate; let image = image ?? newPlant.image; let h2oFrequency = h2oFrequency ?? newPlant.h2oFrequency
         delete(newPlant)
-        CoreDataStack.shared.mainContext.delete(newPlant)
-        do {
-            try CoreDataStack.shared.mainContext.save()
-        }
-        catch {
-            CoreDataStack.shared.mainContext.reset()
-            NSLog("Error saving managed object context: \(error)")
-        }
+        
         create(newPlant: NewPlant(nickname: nickname ?? "", id: id ?? UUID(), wateredDate: wateredDate ?? Date(), image: image ?? Data(), location: location ?? "", h2oFrequency: h2oFrequency))
         
     }
@@ -98,6 +91,14 @@ class NewPlantController {
             print(response!)
             DispatchQueue.main.async { completion(error) }
         }.resume()
+        CoreDataStack.shared.mainContext.delete(newPlant)
+        do {
+            try CoreDataStack.shared.mainContext.save()
+        }
+        catch {
+            CoreDataStack.shared.mainContext.reset()
+            NSLog("Error saving managed object context: \(error)")
+        }
     }
     
     // MARK: - Internal methods
