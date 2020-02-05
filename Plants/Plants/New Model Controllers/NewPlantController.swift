@@ -107,7 +107,7 @@ class NewPlantController {
         let representationsByID = Dictionary(uniqueKeysWithValues: zip(identifiersToFetch, representations))
         var toCreate = representationsByID
         let fetchRequest: NSFetchRequest<NewPlant> = NewPlant.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "identifier IN %@", identifiersToFetch)
+        fetchRequest.predicate = NSPredicate(format: "id IN %@", identifiersToFetch)
         let context = CoreDataStack.shared.container.newBackgroundContext()
         context.perform {
             do { let existingPlants = try context.fetch(fetchRequest)

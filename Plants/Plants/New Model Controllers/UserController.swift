@@ -34,9 +34,14 @@ class UserController{
     
     var authToken: Token? {
         didSet {
-            UserController.keychain.set(self.authToken?.token ?? "", forKey: "Auth")
+            if let token = self.authToken?.token {
+                var hasher = Hasher()
+                hasher.combine(token)
+                UserController.keychain.set("\(hasher.finalize())", forKey: "Auth")
+            }
         }
     }
+    
     var userID: ID?
     
     
