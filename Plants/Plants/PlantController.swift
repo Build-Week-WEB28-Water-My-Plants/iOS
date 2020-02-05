@@ -14,25 +14,29 @@ class PlantController {
     
     var myPlants = [PlantRepresentation]()
     
+    static var shared = PlantController() 
+    
     let baseURL = URL(string: "https://water-my-plants-1.herokuapp.com/api")!
     // MARK: - Set Functions
     
     func createPlantInServer(plant: Plant, completion: @escaping() -> Void = {}) {
         let token = String(describing: UserController.shared.authToken?.token)
         
-        SpeciesController.shared.createSpecies(h2oFrequency: plant.h2oFrequency) { (error) in
-            if let error = error {
-                          DispatchQueue.main.async { completion()}
-                          return
-                      }
+        let speciesId = SpeciesController.shared.createSpecies(h2oFrequency: plant.h2oFrequency, image: plant.image) { (error) in
+                DispatchQueue.main.async { completion() }
+                return
         }
+        guard let speciesId2 = speciesId, let nickname = plant.nickname, let location = plant.location, let image = plant.image, let wateredDate = plant.wateredDate else { return }
+        
+        let plant2 = Plant(speciesId: Double(speciesId2), nickname: nickname, location: location, image: image, id: plant.id, h2oFrequency: plant.h2oFrequency, wateredDate: wateredDate)
         
         let requestURL = baseURL.appendingPathComponent("/plants")
         var request = URLRequest(url: requestURL)
         request.httpMethod = HTTPMethod.put.rawValue
         request.setValue(token, forHTTPHeaderField: "Authorization")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        guard var plantRepresentation = plant.plantRepresentation else {
+        guard var plantRepresentation = plant2.plantRepresentation else {
             NSLog("Error with request URL")
             completion()
             return
@@ -74,11 +78,11 @@ class PlantController {
     
     func updateServer(_ plant: PlantRepresentation, completion: @escaping(Error?) -> Void) {
         guard let token = UserController.shared.authToken else { return }
-        SpeciesController.shared.updateSpecies(id: Int(plant.id), h2oFrequency: plant.h2oFrequency ?? 0) { (error) in
+        SpeciesController.shared.updateSpecies(id: Int(plant.id), h2oFrequency: plant.h2oFrequency ?? 0, image: plant.image) { (error) in
             if let error = error {
-                          DispatchQueue.main.async { completion(error) }
-                          return
-                      }
+                DispatchQueue.main.async { completion(error) }
+                return
+            }
         }
         
         
@@ -118,6 +122,7 @@ class PlantController {
         var request = URLRequest(url: requestURL)
         request.httpMethod = HTTPMethod.delete.rawValue
         request.addValue(token, forHTTPHeaderField: "Authorization")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         URLSession.shared.dataTask(with: request) { _, response, error in
             if let response = response {
                 print(response)
@@ -136,50 +141,53 @@ class PlantController {
     }
     
     // MARK: - Get Functions
-    func fetchPlantFromServer(completion: @escaping() -> Void = {} ) {
+    func fetchPlantFromServer(completion: @escaping (Error?) -> Void = {_ in } ) {
         /// For updating  a plant, check back in later.
-        
-     
-        
-        let requestURL = baseURL.appendingPathExtension("json")
-        let request = URLRequest(url: requestURL)
+        let token = String(describing: UserController.shared.authToken?.token)
+        guard let id = UserController.shared.userID else { return }
+        print("id= \(id) token:\(token)")
+        let requestURL = baseURL.appendingPathComponent("plants/user/\(id)")
+        var request = URLRequest(url: requestURL)
+        request.addValue(token, forHTTPHeaderField: "Authorization")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
         URLSession.shared.dataTask(with: request) { data, _, error in
             
             if let error = error {
                 NSLog("Error with request: \(error)")
-                completion()
+                completion(error)
                 return
             }
             
             guard let data = data else {
-                NSLog("Error fetching data: \(error)")
-                completion()
+                NSLog("Error fetching data: \(String(describing: error))")
+                completion(error)
                 return
             }
             
             do {
-                let plants = try JSONDecoder().decode([String: PlantRepresentation].self, from: data).map({ $0.value })
-                for plant in plants
-               { SpeciesController.shared.getCorrespondingSpecies(id: Int(plant.id)) { (error) in
-                    if let error = error {
-                                   DispatchQueue.main.async { completion() }
-                                   return
-                               }
-                    
-                }}
+                var plants = try JSONDecoder().decode(PlantRepresentations.self, from: data).results
+                var i = 0
+                for plant in plants {
+                    let speciesId = SpeciesController.shared.getCorrespondingSpecies(id: Int(plant.id)) { (error) in
+                            DispatchQueue.main.async { completion(error) }
+                            return
+                    }
+                    plants[i].speciesId = Double(speciesId?.id ?? 7)
+                    i += 1
+                }
                 
             } catch {
                 NSLog("Error decoding: \(error)")
             }
-            completion()
+            completion(nil)
         }.resume()
     }
     // MARK: - Crud Functions
     
-    func createPlant(with speciesId: Double, nickname: String, location: String, image: Data, id: Double, h2oFrequency: Double?, context: NSManagedObjectContext) {
+    func createPlant(with speciesId: Double, nickname: String, location: String, image: Data, id: Double, wateredDate: Date, h2oFrequency: Double?, context: NSManagedObjectContext) {
         
-        let plant = Plant(speciesId: speciesId, nickname: nickname, location: location, image: image, id: id, h2oFrequency: h2oFrequency, context: context)
+        let plant = Plant(speciesId: speciesId, nickname: nickname, location: location, image: image, id: id, h2oFrequency: h2oFrequency, wateredDate: wateredDate, context: context)
         
         do {
             try CoreDataStack.shared.save()

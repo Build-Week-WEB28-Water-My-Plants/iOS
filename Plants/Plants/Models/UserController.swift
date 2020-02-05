@@ -28,15 +28,14 @@ class UserController{
     private let signUpURL = URL(string: "https://water-my-plants-1.herokuapp.com/api/users/register" )!
     
     private let loginUserURL = URL(string: "https://water-my-plants-1.herokuapp.com/api/users/login")!
-     //
+    
     static var shared = UserController()
     
-    var authToken:Token?
+    var authToken: Token?
     var userID: ID?
     
     
     func signUp(with user: UserRepresentation, completion: @escaping (Error?) -> ()) {
-       
         
         var request = URLRequest(url: signUpURL)
         request.httpMethod = HTTPMethod.post.rawValue
@@ -82,7 +81,7 @@ class UserController{
             DispatchQueue.main.async { completion(nil) }
                 }.resume()
             
-            
+            logIn(with: user, completion: completion)
     }
     
     
@@ -139,42 +138,42 @@ class UserController{
         }.resume()
     }
     
-    func getUserPlants( completion: @escaping ([PlantRepresentation]?, Error?) -> Void) {
-        guard let token = authToken?.token else {
-            DispatchQueue.main.async { completion(nil, NSError()) }
-            return
-            
-        }
-        
-        guard let userId = userID?.id else { return }
-        
-        let userPlantsURL = baseURL.appendingPathComponent("/plants/user/\(userId)")
-        
-        var request = URLRequest(url: userPlantsURL)
-              request.httpMethod = HTTPMethod.get.rawValue
-              request.addValue(token, forHTTPHeaderField: "Authorization")
-              URLSession.shared.dataTask(with: request) { data, _, error in
-                  if let _ = error {
-                      print("Error")
-                    DispatchQueue.main.async { completion(nil, error) }
-                      return
-                  }
-                  guard let data = data else {
-                      print("Bad Data")
-                      return
-                  }
-                  let decoder = JSONDecoder()
-                  decoder.keyDecodingStrategy = .convertFromSnakeCase
-                  do {
-                      let userPlants = try decoder.decode([PlantRepresentation].self, from: data)
-                    DispatchQueue.main.async { completion(userPlants, nil) }
-                      
-                  } catch {
-                      print("Error decoding")
-                    DispatchQueue.main.async { completion(nil, error) }
-                  }
-              }.resume()
-          }
+//    func getUserPlants( completion: @escaping ([PlantRepresentation]?, Error?) -> Void) {
+//        guard let token = authToken?.token else {
+//            DispatchQueue.main.async { completion(nil, NSError()) }
+//            return
+//
+//        }
+//
+//        guard let userId = userID?.id else { return }
+//
+//        let userPlantsURL = baseURL.appendingPathComponent("/plants/user/\(userId)")
+//
+//        var request = URLRequest(url: userPlantsURL)
+//              request.httpMethod = HTTPMethod.get.rawValue
+//              request.addValue(token, forHTTPHeaderField: "Authorization")
+//              URLSession.shared.dataTask(with: request) { data, _, error in
+//                  if let _ = error {
+//                      print("Error")
+//                    DispatchQueue.main.async { completion(nil, error) }
+//                      return
+//                  }
+//                  guard let data = data else {
+//                      print("Bad Data")
+//                      return
+//                  }
+//                  let decoder = JSONDecoder()
+//                  decoder.keyDecodingStrategy = .convertFromSnakeCase
+//                  do {
+//                      let userPlants = try decoder.decode([PlantRepresentation].self, from: data)
+//                    DispatchQueue.main.async { completion(userPlants, nil) }
+//
+//                  } catch {
+//                      print("Error decoding")
+//                    DispatchQueue.main.async { completion(nil, error) }
+//                  }
+//              }.resume()
+//          }
     }
         
     
