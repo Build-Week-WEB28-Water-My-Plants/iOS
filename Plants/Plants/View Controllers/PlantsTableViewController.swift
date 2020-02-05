@@ -25,6 +25,19 @@ class PlantsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
+    @IBAction func refresh(_ sender: Any) {
+           newPlantController.read { (error) in
+               if let error = error {
+                   //Handle error
+                print("Error refreshing: \(error)")
+                self.refreshControl?.endRefreshing()
+               } else {
+                self.tableView.reloadData()
+                self.refreshControl?.endRefreshing()
+            }
+           }
+       }
 
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
