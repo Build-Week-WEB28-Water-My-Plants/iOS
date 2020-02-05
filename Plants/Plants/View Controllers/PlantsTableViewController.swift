@@ -10,8 +10,8 @@ import CoreData
 
 class PlantsTableViewController: UITableViewController {
     
-    lazy var fetchedResultsController: NSFetchedResultsController<Plant> = {
-        let fetchRequest: NSFetchRequest<Plant> = Plant.fetchRequest()
+    lazy var fetchedResultsController: NSFetchedResultsController<NewPlant> = {
+        let fetchRequest: NSFetchRequest<NewPlant> = NewPlant.fetchRequest()
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "h2oFrequency", ascending: true), NSSortDescriptor(key: "nickname", ascending: true)]
         let context = CoreDataStack.shared.mainContext
         let frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: "h2oFrequency", cacheName: nil)
@@ -20,7 +20,7 @@ class PlantsTableViewController: UITableViewController {
         return frc
     }()
     
-    var plantController = PlantController()
+    var newPlantController = NewPlantController.shared
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,8 +54,7 @@ class PlantsTableViewController: UITableViewController {
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowSegue", let destination = segue.destination as? PlantDetailViewController, let indexPath = tableView.indexPathForSelectedRow {
-            destination.plant = fetchedResultsController.object(at: indexPath)
-            destination.plantController = plantController
+            destination.newPlant = fetchedResultsController.object(at: indexPath)
         }
     }
 }
