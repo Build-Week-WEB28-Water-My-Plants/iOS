@@ -493,16 +493,172 @@
         <!--Account Settings-->
         <scene sceneID="B3Q-1F-sZZ">
             <objects>
-                <viewController id="jSI-D3-Azh" sceneMemberID="viewController">
+                <viewController id="jSI-D3-Azh" customClass="AccountSettingsViewController" customModule="PlantWise" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bfJ-Vu-G2p">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="PLZ-dM-hLi">
+                                <rect key="frame" x="30" y="250.5" width="354" height="55.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EMAIL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SMJ-BT-Qhl">
+                                        <rect key="frame" x="0.0" y="0.0" width="34" height="13.5"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="11"/>
+                                        <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6cr-Lr-YS6" customClass="CustomField" customModule="PlantWise" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="13.5" width="354" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="p8i-Fd-ff0"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits" textContentType="email"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="vInset">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aOt-uY-ca0">
+                                        <rect key="frame" x="0.0" y="53.5" width="354" height="2"/>
+                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="2" id="Iux-uf-q35"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="6cr-Lr-YS6" secondAttribute="trailing" id="0pb-an-Tkq"/>
+                                    <constraint firstAttribute="trailing" secondItem="aOt-uY-ca0" secondAttribute="trailing" id="VUi-b7-sc5"/>
+                                </constraints>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="gNM-jw-L0S">
+                                <rect key="frame" x="30" y="322" width="354" height="55.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PHONE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MVG-Gj-JDQ">
+                                        <rect key="frame" x="0.0" y="0.0" width="39.5" height="13.5"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="11"/>
+                                        <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="E4V-Ql-drA" customClass="CustomField" customModule="PlantWise" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="13.5" width="354" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="aD3-if-een"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" textContentType="tel"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="vInset">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oMK-C1-wUP">
+                                        <rect key="frame" x="0.0" y="53.5" width="354" height="2"/>
+                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="2" id="ylF-r1-uhN"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="E4V-Ql-drA" secondAttribute="trailing" id="TdD-sy-eNw"/>
+                                    <constraint firstAttribute="trailing" secondItem="oMK-C1-wUP" secondAttribute="trailing" id="VPI-OR-zQW"/>
+                                </constraints>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="M49-9Y-m7Q">
+                                <rect key="frame" x="30" y="393.5" width="354" height="55.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NEW PASSWORD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7gP-vZ-Kdy">
+                                        <rect key="frame" x="0.0" y="0.0" width="92.5" height="13.5"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="11"/>
+                                        <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Rx7-nx-jGp" customClass="CustomField" customModule="PlantWise" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="13.5" width="354" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="tS3-V0-PfP"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="new-password"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="vInset">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E8d-Nk-3u1">
+                                        <rect key="frame" x="0.0" y="53.5" width="354" height="2"/>
+                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="2" id="srb-87-9qC"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="E8d-Nk-3u1" secondAttribute="trailing" id="4dP-EK-sic"/>
+                                    <constraint firstAttribute="trailing" secondItem="Rx7-nx-jGp" secondAttribute="trailing" id="jue-sf-BoN"/>
+                                </constraints>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dav-Mf-ROQ" customClass="CustomButton" customModule="PlantWise" customModuleProvider="target">
+                                <rect key="frame" x="40" y="738" width="334" height="50"/>
+                                <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="HpP-Zp-OQK"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                <state key="normal" title="Save">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="saveButton:" destination="W7v-Sd-k03" eventType="touchUpInside" id="yh7-31-HpX"/>
+                                    <action selector="saved:" destination="MEl-a6-WJ5" eventType="touchUpInside" id="T6P-H9-nJk"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="lo7-W4-sVr" firstAttribute="bottom" secondItem="dav-Mf-ROQ" secondAttribute="bottom" constant="20" id="3j3-Wj-6XP"/>
+                            <constraint firstItem="lo7-W4-sVr" firstAttribute="trailing" secondItem="M49-9Y-m7Q" secondAttribute="trailing" constant="30" id="BWK-df-DGX"/>
+                            <constraint firstItem="gNM-jw-L0S" firstAttribute="leading" secondItem="lo7-W4-sVr" secondAttribute="leading" constant="30" id="DdN-Tl-TwB"/>
+                            <constraint firstItem="PLZ-dM-hLi" firstAttribute="leading" secondItem="lo7-W4-sVr" secondAttribute="leading" constant="30" id="Dg9-Mx-vpj"/>
+                            <constraint firstItem="M49-9Y-m7Q" firstAttribute="top" secondItem="gNM-jw-L0S" secondAttribute="bottom" constant="16" id="KEP-bR-kAC"/>
+                            <constraint firstItem="M49-9Y-m7Q" firstAttribute="centerY" secondItem="bfJ-Vu-G2p" secondAttribute="centerY" id="QeP-a0-iOi"/>
+                            <constraint firstItem="lo7-W4-sVr" firstAttribute="trailing" secondItem="PLZ-dM-hLi" secondAttribute="trailing" constant="30" id="UrP-kH-DNJ"/>
+                            <constraint firstItem="lo7-W4-sVr" firstAttribute="trailing" secondItem="gNM-jw-L0S" secondAttribute="trailing" constant="30" id="dab-FC-AwE"/>
+                            <constraint firstItem="lo7-W4-sVr" firstAttribute="trailing" secondItem="dav-Mf-ROQ" secondAttribute="trailing" constant="40" id="f8O-9I-isd"/>
+                            <constraint firstItem="gNM-jw-L0S" firstAttribute="top" secondItem="PLZ-dM-hLi" secondAttribute="bottom" constant="16" id="rCg-2t-BkN"/>
+                            <constraint firstItem="M49-9Y-m7Q" firstAttribute="leading" secondItem="lo7-W4-sVr" secondAttribute="leading" constant="30" id="uFg-Wz-GnK"/>
+                            <constraint firstItem="dav-Mf-ROQ" firstAttribute="leading" secondItem="lo7-W4-sVr" secondAttribute="leading" constant="40" id="vwk-sW-JbF"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="lo7-W4-sVr"/>
                     </view>
                     <navigationItem key="navigationItem" title="Account Settings" id="KTt-SW-yi2"/>
+                    <connections>
+                        <outlet property="emailField" destination="6cr-Lr-YS6" id="mk6-k3-Tag"/>
+                        <outlet property="passwordField" destination="Rx7-nx-jGp" id="DAT-5v-y6K"/>
+                        <outlet property="phoneField" destination="E4V-Ql-drA" id="3Wr-wN-UbM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="siM-9X-eG7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="MEl-a6-WJ5" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="4297" y="675"/>
         </scene>
