@@ -12,9 +12,9 @@ class PlantsTableViewController: UITableViewController {
     
     lazy var fetchedResultsController: NSFetchedResultsController<Plant> = {
         let fetchRequest: NSFetchRequest<Plant> = Plant.fetchRequest()
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "h2ofrequency", ascending: true), NSSortDescriptor(key: "nickname", ascending: true)]
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "h2oFrequency", ascending: true), NSSortDescriptor(key: "nickname", ascending: true)]
         let context = CoreDataStack.shared.mainContext
-        let frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: "hasWatched", cacheName: nil)
+        let frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: "h2oFrequency", cacheName: nil)
         frc.delegate = self
         try! frc.performFetch()
         return frc
@@ -39,7 +39,7 @@ class PlantsTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PlantCell", for: indexPath) as! PlantsTableViewCell
         let plant = fetchedResultsController.object(at: indexPath)
         if plant.nickname?.isEmpty ?? true { cell.nameLabel.text = plant.nickname }
-        else { cell.nameLabel.text = "\(plant.nickname ?? "") (\(plant.speciesId))" }
+        else { cell.nameLabel.text = "\(plant.nickname ?? "")" }
         cell.timeLabel.text = "Status: Next Watering tomorrow"
         return cell
     }

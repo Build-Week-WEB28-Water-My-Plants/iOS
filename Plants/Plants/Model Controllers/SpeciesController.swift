@@ -17,6 +17,7 @@ class SpeciesController {
         
         let requestURL = baseURL.appendingPathComponent("/plants/species/list/\(id)")
         var request = URLRequest(url: requestURL)
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue(UserController.shared.authToken?.token ?? "000", forHTTPHeaderField: "Authorization")
         var species: Species?
         URLSession.shared.dataTask(with: request) { (data, _, error) in
@@ -35,13 +36,14 @@ class SpeciesController {
         return species
     }
     
-    func createSpecies(h2oFrequency: Double, completion: @escaping (Error?) -> ()) {
+    func createSpecies(h2oFrequency: Double, image: Data?, completion: @escaping (Error?) -> ()) -> Int? {
         
         let requestURL = baseURL.appendingPathComponent("/plants/species/")
         var request = URLRequest(url: requestURL)
         request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue(UserController.shared.authToken?.token ?? "000", forHTTPHeaderField: "Authorization")
-        let species = Species(h2oFrequency: h2oFrequency, commonName: String.random(length: 20), scientificName: String.random(length: 20))
+        let species = Species(h2oFrequency: h2oFrequency, commonName: String.random(length: 20), scientificName: String.random(length: 20), imageBinary: image)
 
         do {
             let encoder = JSONEncoder()
@@ -49,22 +51,35 @@ class SpeciesController {
             request.httpBody = try encoder.encode(species)
         } catch {
             DispatchQueue.main.async { completion(error) }
-            return
+            return nil
         }
         
+        var species2: Int?
         URLSession.shared.dataTask(with: request) { (data, _, error) in
             if let error = error { completion(error); return }
+            guard let data = data else { completion(NSError()); return }
+            let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = .convertFromSnakeCase
+            do {
+                species2 = try decoder.decode(Species.self, from: data).id
+                completion(nil)
+            } catch {
+                NSLog("Error decoding JSON data: \(error)")
+                completion(error)
+            }
+            
         }.resume()
-        return
+        return species2
     }
     
-    func updateSpecies(id: Int, h2oFrequency: Double, completion: @escaping (Error?) -> ()) {
+    func updateSpecies(id: Int, h2oFrequency: Double, image: Data?, completion: @escaping (Error?) -> ()) {
         
         let requestURL = baseURL.appendingPathComponent("/plants/species/\(id)")
         var request = URLRequest(url: requestURL)
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpMethod = "PUT"
        request.addValue(UserController.shared.authToken?.token ?? "000", forHTTPHeaderField: "Authorization")
-        let species = Species(h2oFrequency: h2oFrequency, commonName: String.random(length: 20), scientificName: String.random(length: 20))
+        let species = Species(h2oFrequency: h2oFrequency, commonName: String.random(length: 20), scientificName: String.random(length: 20), imageBinary: image)
         do {
             let encoder = JSONEncoder()
             encoder.keyEncodingStrategy = .convertToSnakeCase

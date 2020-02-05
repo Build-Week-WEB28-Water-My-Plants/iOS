@@ -149,7 +149,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="My Plants" id="oFI-I9-kKG">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="aAA-4x-WWT"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="aAA-4x-WWT">
+                            <connections>
+                                <segue destination="W7v-Sd-k03" kind="show" identifier="AddSegue" id="zbp-ki-vaP"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HiL-DF-Jpf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -786,7 +790,9 @@ Using icons made by Freepik on Flaticon.
                     <connections>
                         <outlet property="imageButton" destination="e4f-ik-d0n" id="F2y-r8-WkO"/>
                         <outlet property="imageView" destination="f8u-jH-BMN" id="YX2-pE-qOJ"/>
+                        <outlet property="locationField" destination="hRm-cv-VgW" id="1yL-Hr-JaL"/>
                         <outlet property="nameField" destination="TaL-Gw-GBm" id="foU-8D-5CD"/>
+                        <outlet property="waterFreqField" destination="HFM-Lq-zex" id="fFc-vq-cdQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zC9-ed-BKL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -836,4 +842,7 @@ Using icons made by Freepik on Flaticon.
         <image name="leaf" width="512" height="512"/>
         <image name="photo.fill.on.rectangle.fill" catalog="system" width="64" height="48"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="zbp-ki-vaP"/>
+    </inferredMetricsTieBreakers>
 </document>

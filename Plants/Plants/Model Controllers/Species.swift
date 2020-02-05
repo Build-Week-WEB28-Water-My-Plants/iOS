@@ -13,4 +13,5 @@ struct Species: Codable {
     var imageUrl: String?
     var commonName: String?
     var scientificName: String?
+    var imageBinary: Data?
 }
