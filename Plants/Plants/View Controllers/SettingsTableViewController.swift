@@ -44,7 +44,7 @@ class AccountSettingsViewController: UIViewController {
     }
     
     @IBAction func saved(_ sender: Any) {
-        
+        navigationController?.dismiss(animated: true, completion: nil)
     }
     
 }
