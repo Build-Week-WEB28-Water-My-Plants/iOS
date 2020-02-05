@@ -53,7 +53,12 @@ class PlantsTableViewController: UITableViewController {
         let plant = fetchedResultsController.object(at: indexPath)
         if plant.nickname?.isEmpty ?? true { cell.nameLabel.text = plant.nickname }
         else { cell.nameLabel.text = "\(plant.nickname ?? "")" }
-        cell.timeLabel.text = "Status: Next Watering tomorrow"
+        let interval = plant.h2oFrequency * 86400
+        let nextDate = (plant.wateredDate?.advanced(by: TimeInterval(interval)) ?? Date())
+        let formatter = RelativeDateTimeFormatter()
+        formatter.dateTimeStyle = .named
+        
+        cell.timeLabel.text = "Next Watering: \(formatter.string(for: nextDate) ?? "")"
         return cell
     }
     
