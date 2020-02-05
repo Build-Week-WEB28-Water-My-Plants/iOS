@@ -20,6 +20,13 @@ class PlantController {
     func createPlantInServer(plant: Plant, completion: @escaping() -> Void = {}) {
         let token = String(describing: UserController.shared.authToken?.token)
         
+        SpeciesController.shared.createSpecies(h2oFrequency: plant.h2oFrequency) { (error) in
+            if let error = error {
+                          DispatchQueue.main.async { completion()}
+                          return
+                      }
+        }
+        
         let requestURL = baseURL.appendingPathComponent("/plants")
         var request = URLRequest(url: requestURL)
         request.httpMethod = HTTPMethod.put.rawValue
@@ -67,7 +74,12 @@ class PlantController {
     
     func updateServer(_ plant: PlantRepresentation, completion: @escaping(Error?) -> Void) {
         guard let token = UserController.shared.authToken else { return }
-        
+        SpeciesController.shared.updateSpecies(id: Int(plant.id), h2oFrequency: plant.h2oFrequency ?? 0) { (error) in
+            if let error = error {
+                          DispatchQueue.main.async { completion(error) }
+                          return
+                      }
+        }
         
         
         let requestURL = baseURL.appendingPathComponent("/plants/\(plant.id)")
@@ -127,6 +139,8 @@ class PlantController {
     func fetchPlantFromServer(completion: @escaping() -> Void = {} ) {
         /// For updating  a plant, check back in later.
         
+     
+        
         let requestURL = baseURL.appendingPathExtension("json")
         let request = URLRequest(url: requestURL)
         
@@ -145,7 +159,15 @@ class PlantController {
             }
             
             do {
-                let plant = try JSONDecoder().decode([String: PlantRepresentation].self, from: data).map({ $0.value })
+                let plants = try JSONDecoder().decode([String: PlantRepresentation].self, from: data).map({ $0.value })
+                for plant in plants
+               { SpeciesController.shared.getCorrespondingSpecies(id: Int(plant.id)) { (error) in
+                    if let error = error {
+                                   DispatchQueue.main.async { completion() }
+                                   return
+                               }
+                    
+                }}
                 
             } catch {
                 NSLog("Error decoding: \(error)")
