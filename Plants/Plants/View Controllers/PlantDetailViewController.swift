@@ -17,16 +17,19 @@ class PlantDetailViewController: UIViewController, UITextFieldDelegate {
     
     var newPlant: NewPlant?
     var newPlantController = NewPlantController.shared
-        
+    var creating = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         nameField.delegate = self
         locationField.delegate = self
         waterFreqField.delegate = self
-        guard let plant = newPlant else { return }
-        nameField.text = plant.nickname
-        locationField.text = plant.location
-        waterFreqField.text = String(plant.h2oFrequency)
+        if let plant = newPlant {
+            nameField.text = plant.nickname
+            locationField.text = plant.location
+            waterFreqField.text = String(plant.h2oFrequency)
+            creating = false
+        }
     }
     
     @IBAction func imageButton(_ sender: Any) {
@@ -36,8 +39,11 @@ class PlantDetailViewController: UIViewController, UITextFieldDelegate {
         guard let name = nameField.text, let freq = waterFreqField.text, let loc = locationField.text else {
             //Notify User
             return }
-        newPlantController.create(newPlant: NewPlant(nickname: name, id: UUID(), wateredDate: Date(), image: Data(), location: loc, h2oFrequency: Double(freq) ?? 7)) {_ in 
+        if creating{
+            newPlantController.create(newPlant: NewPlant(nickname: name, id: UUID(), wateredDate: Date(), image: Data(), location: loc, h2oFrequency: Double(freq) ?? 7)) {_ in
             self.navigationController?.popViewController(animated: true)
+            }} else {
+            newPlantController.update(newPlant!, nickname: name, location: loc, wateredDate: newPlant?.wateredDate, image: imageView?.image?.pngData() ?? Data(), h2oFrequency: Double(freq) ?? 7)
         }
         
     }
@@ -47,5 +53,5 @@ class PlantDetailViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
-
+    
 }

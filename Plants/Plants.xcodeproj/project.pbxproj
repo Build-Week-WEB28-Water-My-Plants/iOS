@@ -33,6 +33,7 @@
 		FACCD1D023EB1336004B8D1A /* ID.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACCD1CD23EB1336004B8D1A /* ID.swift */; };
 		FACCD1D123EB1336004B8D1A /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACCD1CE23EB1336004B8D1A /* UserController.swift */; };
 		FACCD1D223EB1336004B8D1A /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACCD1CF23EB1336004B8D1A /* Token.swift */; };
+		FACCD1D523EB2714004B8D1A /* KeychainSwiftDistrib.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACCD1D423EB2714004B8D1A /* KeychainSwiftDistrib.swift */; };
 		FAF9512B23E5EEFE00B41C3A /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAF9512A23E5EEFE00B41C3A /* Login.storyboard */; };
 		FAF9512F23E5F04700B41C3A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF9512E23E5F04700B41C3A /* HomeViewController.swift */; };
 		FAF9513323E5F0AB00B41C3A /* PlantDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF9513223E5F0AB00B41C3A /* PlantDetailViewController.swift */; };
@@ -70,6 +71,7 @@
 		FACCD1CD23EB1336004B8D1A /* ID.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ID.swift; sourceTree = "<group>"; };
 		FACCD1CE23EB1336004B8D1A /* UserController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		FACCD1CF23EB1336004B8D1A /* Token.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
+		FACCD1D423EB2714004B8D1A /* KeychainSwiftDistrib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeychainSwiftDistrib.swift; path = "../../../../keychain-swift/Distrib/KeychainSwiftDistrib.swift"; sourceTree = "<group>"; };
 		FAF9512A23E5EEFE00B41C3A /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		FAF9512E23E5F04700B41C3A /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		FAF9513223E5F0AB00B41C3A /* PlantDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantDetailViewController.swift; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 		FACCD1C323EB0438004B8D1A /* New Models */ = {
 			isa = PBXGroup;
 			children = (
+				FACCD1D423EB2714004B8D1A /* KeychainSwiftDistrib.swift */,
 				FACCD1C423EB0456004B8D1A /* NewPlant.xcdatamodeld */,
 				FACCD1C723EB04EB004B8D1A /* NewPlantRepresentation.swift */,
 				FACCD1C923EB0584004B8D1A /* NewPlant+Convenience.swift */,
@@ -273,6 +276,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FACCD1D123EB1336004B8D1A /* UserController.swift in Sources */,
+				FACCD1D523EB2714004B8D1A /* KeychainSwiftDistrib.swift in Sources */,
 				FACCD1D023EB1336004B8D1A /* ID.swift in Sources */,
 				FA00568E23E8A9C6004E5782 /* CustomField.swift in Sources */,
 				FAF9512F23E5F04700B41C3A /* HomeViewController.swift in Sources */,

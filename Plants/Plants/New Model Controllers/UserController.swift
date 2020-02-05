@@ -30,8 +30,13 @@ class UserController{
     private let loginUserURL = URL(string: "https://water-my-plants-1.herokuapp.com/api/users/login")!
     
     static var shared = UserController()
+    static let keychain = KeychainSwift()
     
-    var authToken: Token?
+    var authToken: Token? {
+        didSet {
+            UserController.keychain.set(self.authToken?.token ?? "", forKey: "Auth")
+        }
+    }
     var userID: ID?
     
     

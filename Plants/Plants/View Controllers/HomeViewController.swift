@@ -18,7 +18,13 @@ class HomeViewController: UIViewController {
     
     // MARK: - Properties
     var profileImage: UIImage?
-    static var authenticated = false
+    static var authenticated: Bool = {
+        if UserController.keychain.get("Auth") != nil {
+            return true
+        } else {
+            return false
+        }
+    }()
     
     // MARK: - Lifecycle
     override func viewDidLoad() {

@@ -13,7 +13,7 @@ class NewPlantController {
     typealias CompletionHandler = (Error?) -> Void
     
     static var shared = NewPlantController()
-    let token = UserController.shared.authToken?.token ?? UUID().uuidString
+    let token = UserController.keychain.get("Auth") ?? UUID().uuidString
     
     init() { read() }
     
