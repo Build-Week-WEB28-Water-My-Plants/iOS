@@ -15,6 +15,8 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var manageButton: UIView!
     @IBOutlet weak var settingsButton: UIButton!
     @IBOutlet weak var statusText: UILabel!
+    @IBOutlet weak var happienessLabel: UILabel!
+    @IBOutlet weak var wateringDate: UILabel!
     
     // MARK: - Properties
     var profileImage: UIImage?
@@ -40,6 +42,7 @@ class HomeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         settingsButton.isHidden = false
+        wateringDate.text = "Next watering day: \(UserController.keychain.get("Date") ?? "not set")"
     }
     
     // MARK: - Private Methods

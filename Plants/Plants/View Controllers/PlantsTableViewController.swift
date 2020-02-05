@@ -21,24 +21,31 @@ class PlantsTableViewController: UITableViewController {
     }()
     
     var newPlantController = NewPlantController.shared
-
+    static var nextDate: String = ""
+    var nextDate: Date? {
+        didSet {
+            UserController.keychain.set("\(PlantsTableViewController.nextDate)", forKey: "Date")
+        }
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     @IBAction func refresh(_ sender: Any) {
-           newPlantController.read { (error) in
-               if let error = error {
-                   //Handle error
+        newPlantController.read { (error) in
+            if let error = error {
+                //Handle error
                 print("Error refreshing: \(error)")
                 self.refreshControl?.endRefreshing()
-               } else {
+            } else {
                 self.tableView.reloadData()
                 self.refreshControl?.endRefreshing()
             }
-           }
-       }
-
+        }
+    }
+    
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return fetchedResultsController.sections?[section].numberOfObjects ?? 0
@@ -47,16 +54,26 @@ class PlantsTableViewController: UITableViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
         return fetchedResultsController.sections?.count ?? 1
     }
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PlantCell", for: indexPath) as! PlantsTableViewCell
         let plant = fetchedResultsController.object(at: indexPath)
-        if plant.nickname?.isEmpty ?? true { cell.nameLabel.text = plant.nickname }
-        else { cell.nameLabel.text = "\(plant.nickname ?? "")" }
+        cell.nameLabel.text = plant.nickname
+        
+        if let image = plant.image {
+            cell.imageView?.image = UIImage(data: image)
+        }
+        
         let interval = plant.h2oFrequency * 86400
+        
         let nextDate = (plant.wateredDate?.advanced(by: TimeInterval(interval)) ?? Date())
         let formatter = RelativeDateTimeFormatter()
         formatter.dateTimeStyle = .named
+        
+        if self.nextDate == nil || nextDate > self.nextDate!{
+            self.nextDate = nextDate
+            PlantsTableViewController.nextDate = formatter.string(for: nextDate) ?? ""
+        }
         
         cell.timeLabel.text = "Next Watering: \(formatter.string(for: nextDate) ?? "")"
         return cell
@@ -68,7 +85,7 @@ class PlantsTableViewController: UITableViewController {
             if section.name == "0" { return "Overdue" } }
         return "Plants"
     }
-
+    
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowSegue", let destination = segue.destination as? PlantDetailViewController, let indexPath = tableView.indexPathForSelectedRow {
