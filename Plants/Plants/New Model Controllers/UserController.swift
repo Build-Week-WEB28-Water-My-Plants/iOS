@@ -147,6 +147,22 @@ class UserController{
         }.resume()
     }
     
+    
+    func updateUser(email:String?, phone:String?) {
+        if email != nil {
+            UserController.keychain.set(email!, forKey:"username")
+            
+        }
+        
+        if phone != nil {
+            UserController.keychain.set(phone!, forKey: "phonenumber")
+            
+        }
+        
+        print(UserController.keychain.get("name"))
+    
+    
+    
 //    func getUserPlants( completion: @escaping ([PlantRepresentation]?, Error?) -> Void) {
 //        guard let token = authToken?.token else {
 //            DispatchQueue.main.async { completion(nil, NSError()) }
@@ -191,3 +207,4 @@ class UserController{
     
     
 
+}

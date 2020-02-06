@@ -40,7 +40,11 @@ class AccountSettingsViewController: UIViewController {
     }
     
     @IBAction func saved(_ sender: Any) {
+        
+        UserController.shared.updateUser(email:email, phone:phone )
+        
         navigationController?.dismiss(animated: true, completion: nil)
+        
     }
     
 }
