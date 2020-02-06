@@ -31,17 +31,25 @@ class AccountSettingsViewController: UIViewController {
     @IBOutlet weak var phoneField: CustomField!
     @IBOutlet weak var passwordField: CustomField!
     
-    var email = ""
-    var phone = ""
+  
     
     override func viewDidLoad() {
-        emailField.text = email
-        phoneField.text = phone
+
     }
     
     @IBAction func saved(_ sender: Any) {
+        var email = "notThis"
+          var phone = "notThis"
+        if let newEmail = emailField.text {
+            email = newEmail
+        }
+        
+        if let newPhone = phoneField.text {
+            phone = newPhone
+        }
         
         UserController.shared.updateUser(email:email, phone:phone )
+        
         
         navigationController?.dismiss(animated: true, completion: nil)
         

@@ -8,21 +8,6 @@
 import Foundation
 import CoreData
 
-enum HTTPMethod: String {
-    case get = "GET"
-    case post = "POST"
-    case put = "PUT"
-    case delete = "DELETE"
-}
-
-enum NetworkError: Error {
-    case noAuth
-    case badAuth
-    case otherError
-    case badData
-    case noDecode
-}
-
 class UserController{
     private let baseURL = Keys.userURL
     private let signUpURL = Keys.signUpURL
@@ -159,7 +144,8 @@ class UserController{
             
         }
         
-        print(UserController.keychain.get("name"))
+        print(UserController.keychain.get("username"))
+        
     
     
     
