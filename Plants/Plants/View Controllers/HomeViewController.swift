@@ -33,10 +33,6 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         formatViews()
         if !HomeViewController.authenticated { performSegue(withIdentifier: "Login", sender: nil) }
-        
-        PlantController.shared.fetchPlantFromServer {error in
-            NSLog("\(String(describing: error))")
-        }
         let center = UNUserNotificationCenter.current()
         center.requestAuthorization(options: [.alert, .sound]) { granted, error in
         }

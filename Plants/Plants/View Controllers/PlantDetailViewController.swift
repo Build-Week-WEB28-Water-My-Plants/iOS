@@ -115,13 +115,8 @@ class PlantDetailViewController: UIViewController, UITextFieldDelegate, UIImageP
         imageButton.isHidden = true
     }
     
-    
-    
-    
-    
     @IBAction func saveButton(_ sender: Any) {
         if currentlyEditing || creating {
-            
             save()
         } else {
             resetTimer()
@@ -141,7 +136,7 @@ class PlantDetailViewController: UIViewController, UITextFieldDelegate, UIImageP
         NotificationHelper.shared.scheduleNotification(for: name, in: Double(freq) ?? 7)
         viewMode()
         if creating{
-            newPlantController.create(newPlant: NewPlant(nickname: name, id: UUID(), wateredDate: Date(), image: Data(), location: loc, h2oFrequency: Double(freq) ?? 7)) {_ in
+            newPlantController.create(newPlant: NewPlant(nickname: name, id: UUID(), wateredDate: Date(), image: imageView?.image?.pngData() ?? Data(), location: loc, h2oFrequency: Double(freq) ?? 7)) {_ in
                 self.navigationController?.popViewController(animated: true)
             }} else {
             newPlantController.update(newPlant!, nickname: name, location: loc, wateredDate: newPlant?.wateredDate, image: imageView?.image?.pngData() ?? Data(), h2oFrequency: Double(freq) ?? 7)

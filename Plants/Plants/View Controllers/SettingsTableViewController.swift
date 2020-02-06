@@ -12,7 +12,6 @@ class SettingsTableViewController: UITableViewController {
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var name: UILabel!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -21,12 +20,9 @@ class SettingsTableViewController: UITableViewController {
     }
     
     // MARK: - Table view data source
-
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return section == 0 ? 1.0 : 32
     }
-    
-    
 }
 
 class AccountSettingsViewController: UIViewController {
