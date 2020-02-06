@@ -24,11 +24,10 @@ enum NetworkError: Error {
 }
 
 class UserController{
-    private let baseURL = URL(string: "https://water-my-plants-1.herokuapp.com/api")!
-    private let signUpURL = URL(string: "https://water-my-plants-1.herokuapp.com/api/users/register" )!
-    
-    private let loginUserURL = URL(string: "https://water-my-plants-1.herokuapp.com/api/users/login")!
-    
+    private let baseURL = Keys.userURL
+    private let signUpURL = Keys.signUpURL
+    private let loginUserURL = Keys.loginUserURL
+        
     static var shared = UserController()
     static let keychain = KeychainSwift()
     
