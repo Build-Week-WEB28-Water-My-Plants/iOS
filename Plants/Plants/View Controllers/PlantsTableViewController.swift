@@ -12,19 +12,19 @@ class PlantsTableViewController: UITableViewController {
     
     lazy var fetchedResultsController: NSFetchedResultsController<NewPlant> = {
         let fetchRequest: NSFetchRequest<NewPlant> = NewPlant.fetchRequest()
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "h2oFrequency", ascending: true), NSSortDescriptor(key: "nickname", ascending: true)]
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "nickname", ascending: true)]
         let context = CoreDataStack.shared.mainContext
-        let frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: "h2oFrequency", cacheName: nil)
+        let frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
         frc.delegate = self
         try! frc.performFetch()
         return frc
     }()
     
     var newPlantController = NewPlantController.shared
-    static var nextDate: String = ""
+    var nextDateString: String = ""
     var nextDate: Date? {
         didSet {
-            UserController.keychain.set("\(PlantsTableViewController.nextDate)", forKey: "Date")
+            UserController.keychain.set("\(self.nextDate!.timeIntervalSince1970.description)", forKey: "Date")
         }
     }
     
@@ -65,25 +65,21 @@ class PlantsTableViewController: UITableViewController {
         }
         
         let interval = plant.h2oFrequency * 86400
-        
         let nextDate = (plant.wateredDate?.advanced(by: TimeInterval(interval)) ?? Date())
-        let formatter = RelativeDateTimeFormatter()
-        formatter.dateTimeStyle = .named
-        
-        if self.nextDate == nil || nextDate > self.nextDate!{
+        if let interval = TimeInterval(UserController.keychain.get("Date") ?? "") {
+        let date = Date(timeIntervalSince1970: interval)
+        self.nextDate = date
+        }
+        if self.nextDate == nil || nextDate < self.nextDate!{
             self.nextDate = nextDate
-            PlantsTableViewController.nextDate = formatter.string(for: nextDate) ?? ""
         }
         
-        cell.timeLabel.text = "Next Watering: \(formatter.string(for: nextDate) ?? "")"
+        cell.timeLabel.text = "Next Watering: \(DateHelper.getRelativeDate(nextDate))"
         return cell
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        guard let section = fetchedResultsController.sections?[section] else { return nil }
-        if fetchedResultsController.sections?.count ?? 1 >= 1 {
-            if section.name == "0" { return "Overdue" } }
-        return "Plants"
+        return nil
     }
     
     // MARK: - Navigation

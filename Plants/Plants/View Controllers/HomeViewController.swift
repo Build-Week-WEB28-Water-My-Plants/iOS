@@ -41,7 +41,22 @@ class HomeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         settingsButton.isHidden = false
-        wateringDate.text = "Next watering day: \(UserController.keychain.get("Date") ?? "not set")"
+//        let dateFormatter = DateFormatter()
+        if let interval = TimeInterval(UserController.keychain.get("Date") ?? "") {
+            let date = Date(timeIntervalSince1970: interval)
+            wateringDate.text = "Next watering day: \(DateHelper.getRelativeDate(date))"
+            if date < Date() {
+                //Overdue
+                happienessLabel.text = "You plants are thisty"
+                happienessLabel.textColor = .systemRed
+                wateringDate.text = "Dehydrating since: \(DateHelper.getRelativeDate(date))"
+                
+            } else {
+                //In time
+                happienessLabel.text = "All your plants are happy"
+                happienessLabel.textColor = .systemGreen
+            }
+        }
     }
     
     // MARK: - Private Methods
@@ -67,11 +82,11 @@ class HomeViewController: UIViewController {
         UIApplication.shared.open(URL(string: "https://www.theguardian.com/lifeandstyle/gardens/")!)
     }
     
-     // MARK: - Navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "PlantsSegue" {
             settingsButton.isHidden = true
         }
-     }
+    }
     
 }
