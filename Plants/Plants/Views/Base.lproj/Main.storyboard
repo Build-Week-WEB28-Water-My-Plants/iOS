@@ -92,11 +92,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PlantCell" id="1JQ-Xb-R97" customClass="PlantsTableViewCell" customModule="PlantWise" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="PlantCell" id="1JQ-Xb-R97" customClass="PlantsTableViewCell" customModule="PlantWise" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="126.33333587646484"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1JQ-Xb-R97" id="nsw-Oa-89T">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="126.33333587646484"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="383" height="126.33333587646484"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ChK-3D-Huj">
@@ -107,7 +107,7 @@
                                             </constraints>
                                         </imageView>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="JHM-5B-yro">
-                                            <rect key="frame" x="112.33333333333334" y="31" width="281.66666666666663" height="64.333333333333329"/>
+                                            <rect key="frame" x="112.33333333333334" y="31" width="262.66666666666663" height="64.333333333333329"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tBU-kE-0cd">
                                                     <rect key="frame" x="0.0" y="0.0" width="66.333333333333329" height="36"/>
@@ -169,7 +169,7 @@
             </objects>
             <point key="canvasLocation" x="3271" y="-23"/>
         </scene>
-        <!--Plants-->
+        <!--PlantsWise-->
         <scene sceneID="Ncr-ZO-bVm">
             <objects>
                 <viewController id="fS5-Yg-exD" customClass="HomeViewController" customModule="PlantWise" customModuleProvider="target" sceneMemberID="viewController">
@@ -359,7 +359,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="kIj-gY-RkZ"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Plants" id="IzA-kr-9x7"/>
+                    <navigationItem key="navigationItem" title="PlantsWise" id="IzA-kr-9x7"/>
                     <connections>
                         <outlet property="firstView" destination="l9N-1Z-N8Z" id="t1R-yf-2P3"/>
                         <outlet property="happienessLabel" destination="2po-tk-KWq" id="yR6-dW-iVe"/>
@@ -397,11 +397,11 @@
                         <sections>
                             <tableViewSection headerTitle="" id="FWe-Aq-jQv">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="130" id="bA0-qx-YXP">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="130" id="bA0-qx-YXP">
                                         <rect key="frame" x="0.0" y="28" width="414" height="130"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bA0-qx-YXP" id="wnr-rK-KR9">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="130"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="383" height="130"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.crop.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="YhC-Iq-iMn">
@@ -413,7 +413,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="Auh-74-yf1">
-                                                    <rect key="frame" x="140" y="44.666666666666671" width="234" height="40.666666666666671"/>
+                                                    <rect key="frame" x="140" y="44.666666666666671" width="215" height="40.666666666666671"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EkQ-fO-fnO">
                                                             <rect key="frame" x="0.0" y="0.0" width="56.666666666666664" height="26.333333333333332"/>
@@ -446,15 +446,15 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="" id="tSm-El-c6z">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="CmH-MN-URH" style="IBUITableViewCellStyleDefault" id="XRJ-AH-f4z">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="CmH-MN-URH" style="IBUITableViewCellStyleDefault" id="XRJ-AH-f4z">
                                         <rect key="frame" x="0.0" y="214" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="XRJ-AH-f4z" id="VPn-62-J3s">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="383" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Licences" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CmH-MN-URH">
-                                                    <rect key="frame" x="20" y="0.0" width="374" height="43.5"/>
+                                                    <rect key="frame" x="20" y="0.0" width="355" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -1003,45 +1003,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rbb-M6-IWV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2537.68115942029" y="675.66964285714278"/>
-        </scene>
-        <!--Licences-->
-        <scene sceneID="Ze3-I6-Eai">
-            <objects>
-                <viewController id="ef4-iy-424" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="WNB-cV-clq">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bcY-8A-dUd">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <string key="text">Keychain-Swift
-
-https://github.com/evgenyneu/keychain-swift/blob/master/LICENSE
-
-Flaticon
-
-Using icons made by Freepik on Flaticon.
-https://www.flaticon.com/authors/freepik</string>
-                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="25"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="bcY-8A-dUd" firstAttribute="leading" secondItem="DZE-cp-Clc" secondAttribute="leading" id="0NG-ky-p2a"/>
-                            <constraint firstItem="bcY-8A-dUd" firstAttribute="bottom" secondItem="DZE-cp-Clc" secondAttribute="bottom" id="GR8-YS-mZ1"/>
-                            <constraint firstItem="bcY-8A-dUd" firstAttribute="trailing" secondItem="DZE-cp-Clc" secondAttribute="trailing" id="Xik-Q0-Yja"/>
-                            <constraint firstItem="bcY-8A-dUd" firstAttribute="top" secondItem="DZE-cp-Clc" secondAttribute="top" id="g0M-Tq-KOh"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="DZE-cp-Clc"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Licences" id="Gnw-JX-7fu"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fOA-Pz-h4T" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="5280" y="1353"/>
         </scene>
     </scenes>
     <resources>
