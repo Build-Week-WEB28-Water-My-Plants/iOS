@@ -10,8 +10,6 @@
 		FA00567F23E7AAFE004E5782 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA00567E23E7AAFE004E5782 /* CoreDataStack.swift */; };
 		FA00568623E7BF8D004E5782 /* NewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA00568523E7BF8D004E5782 /* NewsTableViewController.swift */; };
 		FA00568823E7C02A004E5782 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA00568723E7C02A004E5782 /* NewsTableViewCell.swift */; };
-		FA00568A23E8A1FD004E5782 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA00568923E8A1FD004E5782 /* CustomButton.swift */; };
-		FA00568E23E8A9C6004E5782 /* CustomField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA00568D23E8A9C6004E5782 /* CustomField.swift */; };
 		FA24C20E23E8D09400085D2B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA24C20D23E8D09400085D2B /* LoginViewController.swift */; };
 		FA24C21123E8D71700085D2B /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA24C21023E8D71700085D2B /* News.swift */; };
 		FA516C1923E70A8F00A573C7 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA516C1823E70A8F00A573C7 /* SettingsTableViewController.swift */; };
@@ -24,6 +22,8 @@
 		FA9BF15A23E51B37005D8C91 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA9BF15823E51B37005D8C91 /* LaunchScreen.storyboard */; };
 		FAA03DC123EC74AB00F357D6 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA03DC023EC74AB00F357D6 /* Keys.swift */; };
 		FAA03DC323EC805F00F357D6 /* NetworkingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA03DC223EC805F00F357D6 /* NetworkingHelper.swift */; };
+		FAA03DC523EC8ADF00F357D6 /* GeneralHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA03DC423EC8ADF00F357D6 /* GeneralHelpers.swift */; };
+		FAA03DC923EC8E8000F357D6 /* CustomElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA03DC823EC8E8000F357D6 /* CustomElements.swift */; };
 		FACCD1C623EB0456004B8D1A /* NewPlant.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FACCD1C423EB0456004B8D1A /* NewPlant.xcdatamodeld */; };
 		FACCD1C823EB04EB004B8D1A /* NewPlantRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACCD1C723EB04EB004B8D1A /* NewPlantRepresentation.swift */; };
 		FACCD1CA23EB0584004B8D1A /* NewPlant+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACCD1C923EB0584004B8D1A /* NewPlant+Convenience.swift */; };
@@ -43,8 +43,6 @@
 		FA00567E23E7AAFE004E5782 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		FA00568523E7BF8D004E5782 /* NewsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewController.swift; sourceTree = "<group>"; };
 		FA00568723E7C02A004E5782 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
-		FA00568923E8A1FD004E5782 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
-		FA00568D23E8A9C6004E5782 /* CustomField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomField.swift; sourceTree = "<group>"; };
 		FA24C20D23E8D09400085D2B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		FA24C21023E8D71700085D2B /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		FA516C1823E70A8F00A573C7 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
@@ -59,6 +57,8 @@
 		FA9BF15B23E51B37005D8C91 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FAA03DC023EC74AB00F357D6 /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Keys.swift; path = "../New Models/Keys.swift"; sourceTree = "<group>"; };
 		FAA03DC223EC805F00F357D6 /* NetworkingHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingHelper.swift; sourceTree = "<group>"; };
+		FAA03DC423EC8ADF00F357D6 /* GeneralHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralHelpers.swift; sourceTree = "<group>"; };
+		FAA03DC823EC8E8000F357D6 /* CustomElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomElements.swift; sourceTree = "<group>"; };
 		FAC8D3E423EB64C10040A9AB /* PlantWise.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PlantWise.entitlements; sourceTree = "<group>"; };
 		FACCD1C523EB0456004B8D1A /* NewPlant.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NewPlant.xcdatamodel; sourceTree = "<group>"; };
 		FACCD1C723EB04EB004B8D1A /* NewPlantRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPlantRepresentation.swift; sourceTree = "<group>"; };
@@ -107,8 +107,8 @@
 			children = (
 				FAC8D3E423EB64C10040A9AB /* PlantWise.entitlements */,
 				FACCD1D823EB5421004B8D1A /* Helpers */,
-				FACCD1D323EB1350004B8D1A /* New Model Controllers */,
-				FACCD1C323EB0438004B8D1A /* New Models */,
+				FACCD1D323EB1350004B8D1A /* Model Controllers */,
+				FACCD1C323EB0438004B8D1A /* Models */,
 				FA9BF16123E51B3E005D8C91 /* Views */,
 				FA9BF16223E51B46005D8C91 /* View Controllers */,
 				FA9BF16723E51B7B005D8C91 /* Resources */,
@@ -135,9 +135,8 @@
 				FA516C1C23E70B3B00A573C7 /* PlantsTableViewCell.swift */,
 				FAF9513223E5F0AB00B41C3A /* PlantDetailViewController.swift */,
 				FA516C1823E70A8F00A573C7 /* SettingsTableViewController.swift */,
-				FA00568923E8A1FD004E5782 /* CustomButton.swift */,
-				FA00568D23E8A9C6004E5782 /* CustomField.swift */,
 				FA24C20D23E8D09400085D2B /* LoginViewController.swift */,
+				FAA03DC823EC8E8000F357D6 /* CustomElements.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -154,28 +153,44 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		FACCD1C323EB0438004B8D1A /* New Models */ = {
+		FAA03DC623EC8E0C00F357D6 /* Plant */ = {
 			isa = PBXGroup;
 			children = (
 				FACCD1C423EB0456004B8D1A /* NewPlant.xcdatamodeld */,
 				FACCD1C723EB04EB004B8D1A /* NewPlantRepresentation.swift */,
 				FACCD1C923EB0584004B8D1A /* NewPlant+Convenience.swift */,
-				FA00567E23E7AAFE004E5782 /* CoreDataStack.swift */,
-				FA24C21023E8D71700085D2B /* News.swift */,
-				FACCD1CF23EB1336004B8D1A /* Token.swift */,
-				FB5DB48D23E8C7BA00FA369A /* UserRepresentation.swift */,
-				FACCD1CD23EB1336004B8D1A /* ID.swift */,
 			);
-			path = "New Models";
+			path = Plant;
 			sourceTree = "<group>";
 		};
-		FACCD1D323EB1350004B8D1A /* New Model Controllers */ = {
+		FAA03DC723EC8E2700F357D6 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				FB5DB48D23E8C7BA00FA369A /* UserRepresentation.swift */,
+				FACCD1CF23EB1336004B8D1A /* Token.swift */,
+				FACCD1CD23EB1336004B8D1A /* ID.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		FACCD1C323EB0438004B8D1A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				FAA03DC723EC8E2700F357D6 /* User */,
+				FAA03DC623EC8E0C00F357D6 /* Plant */,
+				FA24C21023E8D71700085D2B /* News.swift */,
+				FA00567E23E7AAFE004E5782 /* CoreDataStack.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		FACCD1D323EB1350004B8D1A /* Model Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				FACCD1CE23EB1336004B8D1A /* UserController.swift */,
 				FACCD1CB23EB08AA004B8D1A /* NewPlantController.swift */,
 			);
-			path = "New Model Controllers";
+			path = "Model Controllers";
 			sourceTree = "<group>";
 		};
 		FACCD1D823EB5421004B8D1A /* Helpers */ = {
@@ -185,6 +200,7 @@
 				FACCD1D623EB2DF3004B8D1A /* KeychainSwiftDistrib.swift */,
 				FAA03DC023EC74AB00F357D6 /* Keys.swift */,
 				FAA03DC223EC805F00F357D6 /* NetworkingHelper.swift */,
+				FAA03DC423EC8ADF00F357D6 /* GeneralHelpers.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -264,9 +280,9 @@
 				FAA03DC323EC805F00F357D6 /* NetworkingHelper.swift in Sources */,
 				FACCD1D723EB2DF3004B8D1A /* KeychainSwiftDistrib.swift in Sources */,
 				FACCD1D023EB1336004B8D1A /* ID.swift in Sources */,
-				FA00568E23E8A9C6004E5782 /* CustomField.swift in Sources */,
 				FAF9512F23E5F04700B41C3A /* HomeViewController.swift in Sources */,
 				FA00568823E7C02A004E5782 /* NewsTableViewCell.swift in Sources */,
+				FAA03DC923EC8E8000F357D6 /* CustomElements.swift in Sources */,
 				FACCD1DA23EB5430004B8D1A /* NotificationHelper.swift in Sources */,
 				FA24C20E23E8D09400085D2B /* LoginViewController.swift in Sources */,
 				FACCD1CA23EB0584004B8D1A /* NewPlant+Convenience.swift in Sources */,
@@ -281,11 +297,11 @@
 				FA00568623E7BF8D004E5782 /* NewsTableViewController.swift in Sources */,
 				FA516C1B23E70AA300A573C7 /* PlantsTableViewController.swift in Sources */,
 				FA9BF14B23E51B34005D8C91 /* SceneDelegate.swift in Sources */,
+				FAA03DC523EC8ADF00F357D6 /* GeneralHelpers.swift in Sources */,
 				FAF9513323E5F0AB00B41C3A /* PlantDetailViewController.swift in Sources */,
 				FACCD1CC23EB08AA004B8D1A /* NewPlantController.swift in Sources */,
 				FA516C1D23E70B3B00A573C7 /* PlantsTableViewCell.swift in Sources */,
 				FA516C1923E70A8F00A573C7 /* SettingsTableViewController.swift in Sources */,
-				FA00568A23E8A1FD004E5782 /* CustomButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
