@@ -37,26 +37,29 @@ class PlantDetailViewController: UIViewController, UITextFieldDelegate, UIImageP
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         nameField.delegate = self
         locationField.delegate = self
         waterFreqField.delegate = self
+        imagePC.delegate = self
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow),
+                                               name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide),
+                                               name: UIResponder.keyboardWillHideNotification, object: nil)
+        
         if let plant = newPlant {
             nameField.text = plant.nickname
             locationField.text = plant.location
             waterFreqField.text = String(plant.h2oFrequency)
-            if let image = plant.image {
-                imageView.image = UIImage(data: image)
-            }
+            if let image = plant.image { imageView.image = UIImage(data: image) }
             creating = false
         }
-        imagePC.delegate = self
+        
         currentlyEditing = false
         imageButton.isHidden = true
-        if creating {
-            createMode()
-        } else {
-            viewMode()
-        }
+        if creating { createMode() }
+        else { viewMode() }
     }
     
     // MARK: - Modes
@@ -98,40 +101,29 @@ class PlantDetailViewController: UIViewController, UITextFieldDelegate, UIImageP
     }
     
     @IBAction func imageButton(_ sender: Any) {
-        imagePC.allowsEditing = false
+        imagePC.allowsEditing = true
         let actionSheet = UIAlertController(title: "Photo Source", message: "Choose a source", preferredStyle: .actionSheet)
         
         actionSheet.addAction(UIAlertAction(title: "Camera", style: .default , handler: { (sction: UIAlertAction) in
             if UIImagePickerController.isSourceTypeAvailable(.camera) {
                 self.imagePC.sourceType = .camera
-                self.present(self.imagePC, animated: true, completion: nil)
-            } else {
-                print("Camera not available")
-            }
-        }))
-        
+                self.present(self.imagePC, animated: true, completion: nil) }
+            else { print("Camera not available") } }))
         actionSheet.addAction(UIAlertAction(title: "Photo Libary", style: .default , handler: { (sction: UIAlertAction) in
             self.imagePC.sourceType = .photoLibrary
-            self.present(self.imagePC, animated: true, completion: nil)
-        }))
-        
+            self.present(self.imagePC, animated: true, completion: nil) }))
         actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        
         self.present(actionSheet, animated: true)
-        
     }
     
     @IBAction func saveButton(_ sender: Any) {
-        if currentlyEditing || creating {
-            save()
-        } else {
-            resetTimer()
-        }
+        if currentlyEditing || creating { save() }
+        else { resetTimer() }
     }
     
     // MARK: - ImagePickerController
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        guard let image = info[.originalImage] as? UIImage else { return }
+        guard let image = info[.editedImage] as? UIImage else { return }
         imageView.image = image
         dismiss(animated: true, completion: nil)
         imageButton.isHidden = true
@@ -156,6 +148,16 @@ class PlantDetailViewController: UIViewController, UITextFieldDelegate, UIImageP
             }} else {
             newPlantController.update(newPlant!, nickname: name, location: loc, wateredDate: newPlant?.wateredDate, image: imageView?.image?.pngData() ?? Data(), h2oFrequency: Double(freq) ?? 7)
         }
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0 { self.view.frame.origin.y -= keyboardSize.height }
+        }
+    }
+
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if self.view.frame.origin.y != 0 { self.view.frame.origin.y = 0 }
     }
     
     // MARK: - TextFieldDelegate

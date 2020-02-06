@@ -105,49 +105,71 @@
                                     <rect key="frame" x="0.0" y="0.0" width="383" height="125"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ChK-3D-Huj" customClass="CustomImage" customModule="PlantWise" customModuleProvider="target">
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="JHM-5B-yro">
+                                            <rect key="frame" x="135" y="31" width="220" height="63"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tBU-kE-0cd">
+                                                    <rect key="frame" x="0.0" y="0.0" width="66.333333333333329" height="39.333333333333336"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" text="Status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Gz-Qp-ctH">
+                                                    <rect key="frame" x="0.0" y="47.333333333333329" width="39" height="15.666666666666664"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ezt-qF-y0y" customClass="CustomView" customModule="PlantWise" customModuleProvider="target">
                                             <rect key="frame" x="10" y="10" width="105" height="105"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ChK-3D-Huj" customClass="CustomImage" customModule="PlantWise" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="0.0" width="105" height="105"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="105" id="8Tg-RZ-1Tc"/>
+                                                        <constraint firstAttribute="width" secondItem="ChK-3D-Huj" secondAttribute="height" multiplier="1:1" id="MS5-6U-bfD"/>
+                                                        <constraint firstAttribute="height" constant="105" id="uCH-bl-3fI"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="105" id="DqZ-x1-Jn6"/>
-                                                <constraint firstAttribute="width" secondItem="ChK-3D-Huj" secondAttribute="height" multiplier="1:1" id="MS5-6U-bfD"/>
+                                                <constraint firstAttribute="height" constant="105" id="CLA-he-pTP"/>
+                                                <constraint firstAttribute="width" constant="105" id="dy4-9V-hQ1"/>
+                                                <constraint firstAttribute="trailing" secondItem="ChK-3D-Huj" secondAttribute="trailing" id="gkj-R5-BQh"/>
+                                                <constraint firstAttribute="bottom" secondItem="ChK-3D-Huj" secondAttribute="bottom" id="iTS-Iy-D8P"/>
+                                                <constraint firstItem="ChK-3D-Huj" firstAttribute="leading" secondItem="ezt-qF-y0y" secondAttribute="leading" id="ofZ-hX-hI6"/>
+                                                <constraint firstItem="ChK-3D-Huj" firstAttribute="top" secondItem="ezt-qF-y0y" secondAttribute="top" id="pcK-lc-rM8"/>
                                             </constraints>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                     <real key="value" value="5"/>
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
-                                        </imageView>
-                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="JHM-5B-yro">
-                                            <rect key="frame" x="127" y="31" width="248" height="63"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tBU-kE-0cd">
-                                                    <rect key="frame" x="0.0" y="0.0" width="66.333333333333329" height="37"/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" text="Status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Gz-Qp-ctH">
-                                                    <rect key="frame" x="0.0" y="45" width="44" height="18"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </stackView>
+                                        </view>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="bottom" secondItem="ChK-3D-Huj" secondAttribute="bottom" constant="10" id="2Im-Ed-o1C"/>
-                                        <constraint firstItem="ChK-3D-Huj" firstAttribute="leading" secondItem="nsw-Oa-89T" secondAttribute="leading" constant="10" id="AG9-XL-FhT"/>
-                                        <constraint firstItem="JHM-5B-yro" firstAttribute="leading" secondItem="ChK-3D-Huj" secondAttribute="trailing" constant="12" id="PNO-5A-kRM"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="JHM-5B-yro" secondAttribute="bottom" constant="20" id="kJL-Fj-dNc"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="JHM-5B-yro" secondAttribute="trailing" id="pQL-1k-nle"/>
-                                        <constraint firstItem="ChK-3D-Huj" firstAttribute="top" secondItem="nsw-Oa-89T" secondAttribute="top" constant="10" id="w9P-Er-7IE"/>
-                                        <constraint firstItem="JHM-5B-yro" firstAttribute="top" secondItem="nsw-Oa-89T" secondAttribute="topMargin" constant="20" id="wi6-zP-Ffu"/>
+                                        <constraint firstItem="ezt-qF-y0y" firstAttribute="leading" secondItem="nsw-Oa-89T" secondAttribute="leading" constant="10" id="2g9-78-N6K"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="JHM-5B-yro" secondAttribute="bottom" constant="20" id="CGH-qk-eT4"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="JHM-5B-yro" secondAttribute="trailing" constant="20" id="i1n-dk-2tI"/>
+                                        <constraint firstItem="JHM-5B-yro" firstAttribute="top" secondItem="nsw-Oa-89T" secondAttribute="topMargin" constant="20" id="iNp-fP-kW9"/>
+                                        <constraint firstItem="ezt-qF-y0y" firstAttribute="top" secondItem="nsw-Oa-89T" secondAttribute="top" constant="10" id="kFQ-Dz-4Wi"/>
+                                        <constraint firstAttribute="bottom" secondItem="ezt-qF-y0y" secondAttribute="bottom" constant="10" id="laT-Qh-Du4"/>
+                                        <constraint firstItem="JHM-5B-yro" firstAttribute="leading" secondItem="ezt-qF-y0y" secondAttribute="trailing" constant="20" id="p8x-bc-OGX"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="emptyView" destination="ezt-qF-y0y" id="MU1-Y6-wsZ"/>
                                     <outlet property="imageView" destination="ChK-3D-Huj" id="1gX-PA-gqI"/>
                                     <outlet property="nameLabel" destination="tBU-kE-0cd" id="gTg-oG-AeT"/>
+                                    <outlet property="plantImage" destination="ChK-3D-Huj" id="8hX-Du-AjD"/>
                                     <outlet property="timeLabel" destination="2Gz-Qp-ctH" id="oBM-J4-gQB"/>
                                     <segue destination="W7v-Sd-k03" kind="show" identifier="ShowSegue" id="MLF-W1-uu6"/>
                                 </connections>
@@ -177,9 +199,9 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HiL-DF-Jpf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="ad1-lY-QEk" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3271" y="-23"/>
+            <point key="canvasLocation" x="3269.5652173913045" y="-23.4375"/>
         </scene>
-        <!--PlantsWise-->
+        <!--PlantWise-->
         <scene sceneID="Ncr-ZO-bVm">
             <objects>
                 <viewController id="fS5-Yg-exD" customClass="HomeViewController" customModule="PlantWise" customModuleProvider="target" sceneMemberID="viewController">
@@ -369,7 +391,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="kIj-gY-RkZ"/>
                     </view>
-                    <navigationItem key="navigationItem" title="PlantsWise" id="IzA-kr-9x7"/>
+                    <navigationItem key="navigationItem" title="PlantWise" id="IzA-kr-9x7"/>
                     <connections>
                         <outlet property="firstView" destination="l9N-1Z-N8Z" id="t1R-yf-2P3"/>
                         <outlet property="happienessLabel" destination="2po-tk-KWq" id="yR6-dW-iVe"/>
