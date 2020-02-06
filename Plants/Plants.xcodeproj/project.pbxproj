@@ -26,6 +26,7 @@
 		FA9BF15723E51B37005D8C91 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA9BF15623E51B37005D8C91 /* Assets.xcassets */; };
 		FA9BF15A23E51B37005D8C91 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA9BF15823E51B37005D8C91 /* LaunchScreen.storyboard */; };
 		FA9BF16923E51C55005D8C91 /* Plant+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9BF16823E51C55005D8C91 /* Plant+Convenience.swift */; };
+		FAA03DC123EC74AB00F357D6 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA03DC023EC74AB00F357D6 /* Keys.swift */; };
 		FACCD1C623EB0456004B8D1A /* NewPlant.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FACCD1C423EB0456004B8D1A /* NewPlant.xcdatamodeld */; };
 		FACCD1C823EB04EB004B8D1A /* NewPlantRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACCD1C723EB04EB004B8D1A /* NewPlantRepresentation.swift */; };
 		FACCD1CA23EB0584004B8D1A /* NewPlant+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACCD1C923EB0584004B8D1A /* NewPlant+Convenience.swift */; };
@@ -65,6 +66,7 @@
 		FA9BF15923E51B37005D8C91 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FA9BF15B23E51B37005D8C91 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA9BF16823E51C55005D8C91 /* Plant+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Plant+Convenience.swift"; sourceTree = "<group>"; };
+		FAA03DC023EC74AB00F357D6 /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		FAC8D3E423EB64C10040A9AB /* PlantWise.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PlantWise.entitlements; sourceTree = "<group>"; };
 		FACCD1C523EB0456004B8D1A /* NewPlant.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NewPlant.xcdatamodel; sourceTree = "<group>"; };
 		FACCD1C723EB04EB004B8D1A /* NewPlantRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPlantRepresentation.swift; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 				FACCD1CF23EB1336004B8D1A /* Token.swift */,
 				FB5DB48D23E8C7BA00FA369A /* UserRepresentation.swift */,
 				FACCD1CD23EB1336004B8D1A /* ID.swift */,
+				FAA03DC023EC74AB00F357D6 /* Keys.swift */,
 			);
 			path = "New Models";
 			sourceTree = "<group>";
@@ -301,6 +304,7 @@
 				FA9BF16923E51C55005D8C91 /* Plant+Convenience.swift in Sources */,
 				FB5DB48E23E8C7BA00FA369A /* UserRepresentation.swift in Sources */,
 				FACCD1C823EB04EB004B8D1A /* NewPlantRepresentation.swift in Sources */,
+				FAA03DC123EC74AB00F357D6 /* Keys.swift in Sources */,
 				FA9BF15523E51B34005D8C91 /* Plants.xcdatamodeld in Sources */,
 				FA00567F23E7AAFE004E5782 /* CoreDataStack.swift in Sources */,
 				FACCD1C623EB0456004B8D1A /* NewPlant.xcdatamodeld in Sources */,

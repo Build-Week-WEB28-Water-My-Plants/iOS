@@ -9,7 +9,7 @@ import Foundation
 import CoreData
 
 class NewPlantController {
-    let baseURL = URL(string: "https://plan-58e26.firebaseio.com/")!
+    let baseURL = Keys.baseURL
     typealias CompletionHandler = (Error?) -> Void
     
     static var shared = NewPlantController()
