@@ -25,6 +25,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         continueButton.titleLabel?.leadingAnchor.constraint(equalTo: continueButton.leadingAnchor, constant: 20).isActive = true
         continueButton.titleLabel?.trailingAnchor.constraint(equalTo: continueButton.trailingAnchor, constant: -20).isActive = true
         continueButton.titleLabel?.textAlignment = .center
+        UserController.keychain.set("not set yet", forKey: "Date")
     }
     
     @IBAction func login(_ sender: Any) {
