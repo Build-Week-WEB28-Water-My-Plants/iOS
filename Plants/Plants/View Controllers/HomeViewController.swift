@@ -21,11 +21,8 @@ class HomeViewController: UIViewController {
     // MARK: - Properties
     var profileImage: UIImage?
     static var authenticated: Bool = {
-        if UserController.keychain.get("Auth") != nil {
-            return true
-        } else {
-            return false
-        }
+        if UserController.keychain.get("Auth") != nil { return true }
+        else { return false }
     }()
     
     // MARK: - Lifecycle
@@ -41,22 +38,7 @@ class HomeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         settingsButton.isHidden = false
-//        let dateFormatter = DateFormatter()
-        if let interval = TimeInterval(UserController.keychain.get("Date") ?? "") {
-            let date = Date(timeIntervalSince1970: interval)
-            wateringDate.text = "Next watering day: \(DateHelper.getRelativeDate(date))"
-            if date < Date() {
-                //Overdue
-                happienessLabel.text = "You plants are thisty"
-                happienessLabel.textColor = .systemRed
-                wateringDate.text = "Dehydrating since: \(DateHelper.getRelativeDate(date))"
-                
-            } else {
-                //In time
-                happienessLabel.text = "All your plants are happy"
-                happienessLabel.textColor = .systemGreen
-            }
-        }
+        setDate()
     }
     
     // MARK: - Private Methods
@@ -75,6 +57,16 @@ class HomeViewController: UIViewController {
         
         //SecondView
         secondView.layer.cornerRadius = 10
+    }
+    
+    private func setDate() {
+        if let interval = TimeInterval(UserController.keychain.get("Date") ?? "") {
+            let date = Date(timeIntervalSince1970: interval)
+            let due: Bool = {if date < Date() { return true } else { return false }}()
+            happienessLabel.text = due ? "You plants are thisty" : "All your plants are happy"
+            happienessLabel.textColor = due ? .systemRed : .systemGreen
+            wateringDate.text = due ? "Dehydrating since: \(DateHelper.getRelativeDate(date))" : "Next watering day: \(DateHelper.getRelativeDate(date))"
+        }
     }
     
     // MARK: - IBActions

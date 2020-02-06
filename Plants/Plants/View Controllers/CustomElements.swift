@@ -22,3 +22,9 @@ class CustomButton: UIButton {
     @IBInspectable
     var cornerRadius: CGFloat = 10 { didSet { self.layer.cornerRadius = self.cornerRadius } }
 }
+
+@IBDesignable
+class CustomImage: UIImageView {
+    @IBInspectable
+    var cornerRadius: CGFloat = 10 { didSet { self.layer.cornerRadius = self.cornerRadius } }
+}

@@ -9,21 +9,32 @@ import UIKit
 
 class PlantDetailViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    // MARK: - IBOutlets
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var imageButton: UIButton!
+    
     @IBOutlet weak var nameField: CustomField!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var nameLine: UIView!
     @IBOutlet weak var locationField: CustomField!
+    @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet weak var locationLine: UIView!
     @IBOutlet weak var waterFreqField: CustomField!
+    @IBOutlet weak var waterFreqLine: UIView!
+    @IBOutlet weak var waterFreqLabel: UILabel!
+    
     @IBOutlet weak var editButton: UIBarButtonItem!
     @IBOutlet weak var saveButton: CustomButton!
     @IBOutlet weak var deleteButton: CustomButton!
     
+    // MARK: - Properies
     var newPlant: NewPlant?
     var newPlantController = NewPlantController.shared
     var creating = true
     var currentlyEditing = false
     let imagePC = UIImagePickerController()
     
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         nameField.delegate = self
@@ -48,6 +59,7 @@ class PlantDetailViewController: UIViewController, UITextFieldDelegate, UIImageP
         }
     }
     
+    // MARK: - Modes
     func createMode() {
         editMode()
         deleteButton.isHidden = true
@@ -71,12 +83,13 @@ class PlantDetailViewController: UIViewController, UITextFieldDelegate, UIImageP
         deleteButton.isHidden = true
     }
     
+    // MARK: - IBActions
     @IBAction func edit(_ sender: Any) {
         currentlyEditing = true
         editMode()
     }
     
-
+    
     @IBAction func deletePressed(_ sender: Any) {
         if let newPlant = newPlant {
             newPlantController.delete(newPlant)
@@ -108,13 +121,6 @@ class PlantDetailViewController: UIViewController, UITextFieldDelegate, UIImageP
         
     }
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        guard let image = info[.originalImage] as? UIImage else { return }
-        imageView.image = image
-        dismiss(animated: true, completion: nil)
-        imageButton.isHidden = true
-    }
-    
     @IBAction func saveButton(_ sender: Any) {
         if currentlyEditing || creating {
             save()
@@ -123,15 +129,24 @@ class PlantDetailViewController: UIViewController, UITextFieldDelegate, UIImageP
         }
     }
     
-    func resetTimer() {
+    // MARK: - ImagePickerController
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let image = info[.originalImage] as? UIImage else { return }
+        imageView.image = image
+        dismiss(animated: true, completion: nil)
+        imageButton.isHidden = true
+    }
+    
+    // MARK: - Helper Methods
+    private func resetTimer() {
         newPlantController.update(newPlant!, nickname: newPlant?.nickname, location: newPlant?.location, wateredDate: Date(), image: newPlant?.image, h2oFrequency: newPlant?.h2oFrequency ?? 7)
     }
     
-    
-    func save() {
-        guard let name = nameField.text, let freq = waterFreqField.text, let loc = locationField.text, !name.isEmpty, !freq.isEmpty, !loc.isEmpty else {
-            //Notify User
-            return }
+    private func save() {
+        guard let name = nameField.text, let freq = waterFreqField.text, let loc = locationField.text else { return }
+        guard !name.isEmpty else { nameLine.backgroundColor = .systemRed; nameLabel.textColor = .systemRed; return }
+        guard !loc.isEmpty else { locationLine.backgroundColor = .systemRed; locationLabel.textColor = .systemRed; return }
+        guard !freq.isEmpty else { waterFreqLine.backgroundColor = .systemRed; waterFreqLabel.textColor = .systemRed; return }
         currentlyEditing = false
         NotificationHelper.shared.scheduleNotification(for: name, in: Double(freq) ?? 7)
         viewMode()
@@ -143,6 +158,7 @@ class PlantDetailViewController: UIViewController, UITextFieldDelegate, UIImageP
         }
     }
     
+    // MARK: - TextFieldDelegate
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         if currentlyEditing || creating {
             return true
@@ -153,6 +169,5 @@ class PlantDetailViewController: UIViewController, UITextFieldDelegate, UIImageP
         textField.resignFirstResponder()
         return true
     }
-    
     
 }

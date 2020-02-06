@@ -9,6 +9,7 @@ import UIKit
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
     
+    // MARK: - IBOutlets
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var username: CustomField!
     @IBOutlet weak var password: CustomField!
@@ -17,6 +18,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var continueButton: CustomButton!
     @IBOutlet weak var skipButton: UIButton!
     
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         username.delegate = self
@@ -28,6 +30,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         UserController.keychain.set("not set yet", forKey: "Date")
     }
     
+    // MARK: - IBActions
     @IBAction func login(_ sender: Any) {
         if segment.selectedSegmentIndex == 0 {
             guard let username = username.text, let password = password.text else { return }
@@ -54,12 +57,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
-    
-    
     @IBAction func ckLogin(_ sender: Any) {
         self.performSegue(withIdentifier: "FinishSegue", sender: nil)
         HomeViewController.authenticated = true
@@ -77,8 +74,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    // MARK: - TextFieldDelegate
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
     
-    
+    // MARK: - Helper Methods
     private func isError(_ error: Error?) -> Bool {
         if error != nil {
             print(error.debugDescription)
@@ -89,16 +91,5 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
         return false
     }
-   
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
