@@ -20,7 +20,7 @@ class NewsTableViewController: UITableViewController {
     private var imageString = String()
     private var currentImage = String()
     private var urlString = String()
-
+    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +36,7 @@ class NewsTableViewController: UITableViewController {
         }
     }
     
-    // MARK: - Private Methods
+    // MARK: - Helper Methods
     private func reloadCells() {
         if let path = URL(string: "https://www.theguardian.com/lifeandstyle/gardens/rss"){
             if let parser = XMLParser(contentsOf: path) {
@@ -48,22 +48,22 @@ class NewsTableViewController: UITableViewController {
     }
     
     private func fetchImage(item: Item, index: Int, completion: @escaping () -> Void) {
-           DispatchQueue.global().async { [weak self] in
-               guard let url = item.url else { return }
-               if let data = try? Data(contentsOf: url) {
-                   if !data.isEmpty { DispatchQueue.main.async {
-                       self?.items[index].image = data
-                       completion()
-                       } }
-               }
-           }
-       }
-
+        DispatchQueue.global().async { [weak self] in
+            guard let url = item.url else { return }
+            if let data = try? Data(contentsOf: url) {
+                if !data.isEmpty { DispatchQueue.main.async {
+                    self?.items[index].image = data
+                    completion()
+                    } }
+            }
+        }
+    }
+    
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items.count
     }
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NewsCell", for: indexPath) as! NewsTableViewCell
         let item = items[indexPath.row]
@@ -87,40 +87,40 @@ class NewsTableViewController: UITableViewController {
 // MARK: - XMLParserDelegate
 extension NewsTableViewController: XMLParserDelegate {
     
-       func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
-           if elementName == "item" {
-               titleString = String()
-               dateString = String()
-               imageString = String()
-               urlString = String()
-           }
-           else if elementName == "media:content" {
-               if let url = attributeDict["url"] { self.currentImage = url }
-           }
-           self.elementName = elementName
-       }
-       
-       func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
-           if elementName == "item" {
-               let dateFormatter = DateFormatter()
-               dateFormatter.dateFormat = "E, dd MMM yyyy HH:mm:ss zzz"
-               let date = dateFormatter.date(from: dateString)
-               let item = Item(title: titleString, link: urlString, description: nil, pubDate: date, url: URL(string: currentImage))
-               items.append(item)
-           }
-       }
-       
-       func parser(_ parser: XMLParser, foundCharacters string: String) {
-           let data = string.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
-           
-           if !data.isEmpty {
-               if self.elementName == "title" {
-                   titleString += data
-               } else if self.elementName == "pubDate" {
-                   dateString += data
-               } else if self.elementName == "link" {
-                   urlString += data
-               }
-           }
-       }
+    func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
+        if elementName == "item" {
+            titleString = String()
+            dateString = String()
+            imageString = String()
+            urlString = String()
+        }
+        else if elementName == "media:content" {
+            if let url = attributeDict["url"] { self.currentImage = url }
+        }
+        self.elementName = elementName
+    }
+    
+    func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
+        if elementName == "item" {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "E, dd MMM yyyy HH:mm:ss zzz"
+            let date = dateFormatter.date(from: dateString)
+            let item = Item(title: titleString, link: urlString, description: nil, pubDate: date, url: URL(string: currentImage))
+            items.append(item)
+        }
+    }
+    
+    func parser(_ parser: XMLParser, foundCharacters string: String) {
+        let data = string.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+        
+        if !data.isEmpty {
+            if self.elementName == "title" {
+                titleString += data
+            } else if self.elementName == "pubDate" {
+                dateString += data
+            } else if self.elementName == "link" {
+                urlString += data
+            }
+        }
+    }
 }

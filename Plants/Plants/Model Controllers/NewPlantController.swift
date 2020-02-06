@@ -75,10 +75,10 @@ class NewPlantController {
     
     func update(_ newPlant: NewPlant, nickname: String?, location: String?, wateredDate: Date?, image: Data?, h2oFrequency: Double?) {
         let nickname = nickname ?? newPlant.nickname; let id = newPlant.id; let location = location ?? newPlant.location; let wateredDate = wateredDate ?? newPlant.wateredDate; let image = image ?? newPlant.image; let h2oFrequency = h2oFrequency ?? newPlant.h2oFrequency
-        delete(newPlant)
-        
-        create(newPlant: NewPlant(nickname: nickname ?? "", id: id ?? UUID(), wateredDate: wateredDate ?? Date(), image: image ?? Data(), location: location ?? "", h2oFrequency: h2oFrequency))
-        
+        delete(newPlant) { _ in
+            guard !(nickname?.isEmpty ?? true) else { return }
+            self.create(newPlant: NewPlant(nickname: nickname ?? "", id: id ?? UUID(), wateredDate: wateredDate ?? Date(), image: image ?? Data(), location: location ?? "", h2oFrequency: h2oFrequency))
+        }
     }
     
     func delete(_ newPlant: NewPlant, completion: @escaping CompletionHandler = { _ in }) {
@@ -88,15 +88,16 @@ class NewPlantController {
         request.httpMethod = "DELETE"
         
         URLSession.shared.dataTask(with: request) { _, response, error in
-            print(response!)
-            DispatchQueue.main.async { completion(error) }
+            if let error = error { completion(error) }
         }.resume()
         CoreDataStack.shared.mainContext.delete(newPlant)
         do {
             try CoreDataStack.shared.mainContext.save()
+            DispatchQueue.main.async { completion(nil) }
         }
         catch {
             CoreDataStack.shared.mainContext.reset()
+            DispatchQueue.main.async { completion(error) }
             NSLog("Error saving managed object context: \(error)")
         }
     }

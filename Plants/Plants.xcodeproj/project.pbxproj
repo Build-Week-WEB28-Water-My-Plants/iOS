@@ -15,12 +15,12 @@
 		FA516C1923E70A8F00A573C7 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA516C1823E70A8F00A573C7 /* SettingsTableViewController.swift */; };
 		FA516C1B23E70AA300A573C7 /* PlantsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA516C1A23E70AA300A573C7 /* PlantsTableViewController.swift */; };
 		FA516C1D23E70B3B00A573C7 /* PlantsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA516C1C23E70B3B00A573C7 /* PlantsTableViewCell.swift */; };
+		FA6F862123EC942400C1D988 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6F862023EC942300C1D988 /* Keys.swift */; };
 		FA9BF14923E51B34005D8C91 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9BF14823E51B34005D8C91 /* AppDelegate.swift */; };
 		FA9BF14B23E51B34005D8C91 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9BF14A23E51B34005D8C91 /* SceneDelegate.swift */; };
 		FA9BF15223E51B34005D8C91 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA9BF15023E51B34005D8C91 /* Main.storyboard */; };
 		FA9BF15723E51B37005D8C91 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA9BF15623E51B37005D8C91 /* Assets.xcassets */; };
 		FA9BF15A23E51B37005D8C91 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA9BF15823E51B37005D8C91 /* LaunchScreen.storyboard */; };
-		FAA03DC123EC74AB00F357D6 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA03DC023EC74AB00F357D6 /* Keys.swift */; };
 		FAA03DC323EC805F00F357D6 /* NetworkingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA03DC223EC805F00F357D6 /* NetworkingHelper.swift */; };
 		FAA03DC523EC8ADF00F357D6 /* GeneralHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA03DC423EC8ADF00F357D6 /* GeneralHelpers.swift */; };
 		FAA03DC923EC8E8000F357D6 /* CustomElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA03DC823EC8E8000F357D6 /* CustomElements.swift */; };
@@ -48,6 +48,7 @@
 		FA516C1823E70A8F00A573C7 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		FA516C1A23E70AA300A573C7 /* PlantsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantsTableViewController.swift; sourceTree = "<group>"; };
 		FA516C1C23E70B3B00A573C7 /* PlantsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantsTableViewCell.swift; sourceTree = "<group>"; };
+		FA6F862023EC942300C1D988 /* Keys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		FA9BF14523E51B34005D8C91 /* PlantWise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlantWise.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA9BF14823E51B34005D8C91 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA9BF14A23E51B34005D8C91 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -55,7 +56,6 @@
 		FA9BF15623E51B37005D8C91 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA9BF15923E51B37005D8C91 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FA9BF15B23E51B37005D8C91 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FAA03DC023EC74AB00F357D6 /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Keys.swift; path = "../New Models/Keys.swift"; sourceTree = "<group>"; };
 		FAA03DC223EC805F00F357D6 /* NetworkingHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingHelper.swift; sourceTree = "<group>"; };
 		FAA03DC423EC8ADF00F357D6 /* GeneralHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralHelpers.swift; sourceTree = "<group>"; };
 		FAA03DC823EC8E8000F357D6 /* CustomElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomElements.swift; sourceTree = "<group>"; };
@@ -90,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				FA9BF14723E51B34005D8C91 /* Plants */,
+				FAC8D3E423EB64C10040A9AB /* PlantWise.entitlements */,
 				FA9BF14623E51B34005D8C91 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -105,12 +106,11 @@
 		FA9BF14723E51B34005D8C91 /* Plants */ = {
 			isa = PBXGroup;
 			children = (
-				FAC8D3E423EB64C10040A9AB /* PlantWise.entitlements */,
-				FACCD1D823EB5421004B8D1A /* Helpers */,
-				FACCD1D323EB1350004B8D1A /* Model Controllers */,
-				FACCD1C323EB0438004B8D1A /* Models */,
 				FA9BF16123E51B3E005D8C91 /* Views */,
 				FA9BF16223E51B46005D8C91 /* View Controllers */,
+				FACCD1D323EB1350004B8D1A /* Model Controllers */,
+				FACCD1C323EB0438004B8D1A /* Models */,
+				FACCD1D823EB5421004B8D1A /* Helpers */,
 				FA9BF16723E51B7B005D8C91 /* Resources */,
 			);
 			path = Plants;
@@ -196,11 +196,11 @@
 		FACCD1D823EB5421004B8D1A /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				FACCD1D923EB5430004B8D1A /* NotificationHelper.swift */,
-				FACCD1D623EB2DF3004B8D1A /* KeychainSwiftDistrib.swift */,
-				FAA03DC023EC74AB00F357D6 /* Keys.swift */,
-				FAA03DC223EC805F00F357D6 /* NetworkingHelper.swift */,
 				FAA03DC423EC8ADF00F357D6 /* GeneralHelpers.swift */,
+				FACCD1D923EB5430004B8D1A /* NotificationHelper.swift */,
+				FAA03DC223EC805F00F357D6 /* NetworkingHelper.swift */,
+				FACCD1D623EB2DF3004B8D1A /* KeychainSwiftDistrib.swift */,
+				FA6F862023EC942300C1D988 /* Keys.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -283,12 +283,12 @@
 				FAF9512F23E5F04700B41C3A /* HomeViewController.swift in Sources */,
 				FA00568823E7C02A004E5782 /* NewsTableViewCell.swift in Sources */,
 				FAA03DC923EC8E8000F357D6 /* CustomElements.swift in Sources */,
+				FA6F862123EC942400C1D988 /* Keys.swift in Sources */,
 				FACCD1DA23EB5430004B8D1A /* NotificationHelper.swift in Sources */,
 				FA24C20E23E8D09400085D2B /* LoginViewController.swift in Sources */,
 				FACCD1CA23EB0584004B8D1A /* NewPlant+Convenience.swift in Sources */,
 				FB5DB48E23E8C7BA00FA369A /* UserRepresentation.swift in Sources */,
 				FACCD1C823EB04EB004B8D1A /* NewPlantRepresentation.swift in Sources */,
-				FAA03DC123EC74AB00F357D6 /* Keys.swift in Sources */,
 				FA00567F23E7AAFE004E5782 /* CoreDataStack.swift in Sources */,
 				FACCD1C623EB0456004B8D1A /* NewPlant.xcdatamodeld in Sources */,
 				FA9BF14923E51B34005D8C91 /* AppDelegate.swift in Sources */,

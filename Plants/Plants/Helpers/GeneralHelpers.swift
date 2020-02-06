@@ -8,9 +8,10 @@
 import Foundation
 
 class DateHelper {
-    static func getRelativeDate(_ date: Date) -> String{
+    static func getRelativeDate(_ date: Date) -> String {
         let formatter = RelativeDateTimeFormatter()
         formatter.dateTimeStyle = .named
         return formatter.string(for: date) ?? ""
     }
+    
 }

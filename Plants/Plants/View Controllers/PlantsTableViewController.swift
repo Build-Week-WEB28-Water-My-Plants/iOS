@@ -10,9 +10,10 @@ import CoreData
 
 class PlantsTableViewController: UITableViewController {
     
+    // MARK: - frc
     lazy var fetchedResultsController: NSFetchedResultsController<NewPlant> = {
         let fetchRequest: NSFetchRequest<NewPlant> = NewPlant.fetchRequest()
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "nickname", ascending: true)]
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "wateredDate", ascending: true)]
         let context = CoreDataStack.shared.mainContext
         let frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
         frc.delegate = self
@@ -20,19 +21,18 @@ class PlantsTableViewController: UITableViewController {
         return frc
     }()
     
+    // MARK: - Properties
     var newPlantController = NewPlantController.shared
     var nextDateString: String = ""
-    var nextDate: Date? {
-        didSet {
-            UserController.keychain.set("\(self.nextDate!.timeIntervalSince1970.description)", forKey: "Date")
-        }
-    }
+    var nextDate: Date? { didSet { UserController.keychain.set("\(self.nextDate!.timeIntervalSince1970.description)", forKey: "Date") } }
     
-    
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        UserController.keychain.delete("Date")
     }
     
+    // MARK: - IBActions
     @IBAction func refresh(_ sender: Any) {
         newPlantController.read { (error) in
             if let error = error {
@@ -60,21 +60,19 @@ class PlantsTableViewController: UITableViewController {
         let plant = fetchedResultsController.object(at: indexPath)
         cell.nameLabel.text = plant.nickname
         
-        if let image = plant.image {
-            cell.imageView?.image = UIImage(data: image)
-        }
+        if let image = plant.image { cell.imageView?.image = UIImage(data: image) }
+        
         
         let interval = plant.h2oFrequency * 86400
-        let nextDate = (plant.wateredDate?.advanced(by: TimeInterval(interval)) ?? Date())
-        if let interval = TimeInterval(UserController.keychain.get("Date") ?? "") {
-        let date = Date(timeIntervalSince1970: interval)
-        self.nextDate = date
-        }
-        if self.nextDate == nil || nextDate < self.nextDate!{
-            self.nextDate = nextDate
+        let date = (plant.wateredDate?.advanced(by: TimeInterval(interval)) ?? Date())
+        if self.nextDate == nil || date < self.nextDate!{
+            self.nextDate = date
         }
         
-        cell.timeLabel.text = "Next Watering: \(DateHelper.getRelativeDate(nextDate))"
+        let due: Bool = {if date < Date() { return true } else { return false }}()
+        cell.timeLabel.text = due ? "Dehydrating since: \(DateHelper.getRelativeDate(date))" : "Next Watering: \(DateHelper.getRelativeDate(date))"
+        cell.timeLabel.textColor = due ? .systemRed : .secondaryLabel
+        
         return cell
     }
     
@@ -90,6 +88,7 @@ class PlantsTableViewController: UITableViewController {
     }
 }
 
+// MARK: - FetchedResultsControllerDelegate
 extension PlantsTableViewController: NSFetchedResultsControllerDelegate {
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.beginUpdates()
@@ -100,9 +99,9 @@ extension PlantsTableViewController: NSFetchedResultsControllerDelegate {
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
         switch type {
         case .insert:
-            tableView.insertSections(IndexSet(integer: sectionIndex), with: .automatic)
+            tableView.insertSections(IndexSet(integer: sectionIndex), with: .none)
         case .delete:
-            tableView.deleteSections(IndexSet(integer: sectionIndex), with: .automatic)
+            tableView.deleteSections(IndexSet(integer: sectionIndex), with: .none)
         default:
             break
         }
@@ -111,20 +110,21 @@ extension PlantsTableViewController: NSFetchedResultsControllerDelegate {
         switch type {
         case .insert:
             guard let newIndexPath = newIndexPath else { return }
-            tableView.insertRows(at: [newIndexPath], with: .automatic)
+            tableView.insertRows(at: [newIndexPath], with: .none)
         case .update:
             guard let indexPath = indexPath else { return }
-            tableView.reloadRows(at: [indexPath], with: .automatic)
+            tableView.reloadRows(at: [indexPath], with: .none)
         case .move:
             guard let oldIndexPath = indexPath,
                 let newIndexPath = newIndexPath else { return }
-            tableView.deleteRows(at: [oldIndexPath], with: .automatic)
-            tableView.insertRows(at: [newIndexPath], with: .automatic)
+            tableView.deleteRows(at: [oldIndexPath], with: .none)
+            tableView.insertRows(at: [newIndexPath], with: .none)
         case .delete:
             guard let indexPath = indexPath else { return }
-            tableView.deleteRows(at: [indexPath], with: .automatic)
+            tableView.deleteRows(at: [indexPath], with: .none)
         @unknown default:
             break
         }
     }
 }
+
