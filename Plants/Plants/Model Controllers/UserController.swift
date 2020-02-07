@@ -12,7 +12,8 @@ class UserController{
     private let baseURL = Keys.userURL
     private let signUpURL = Keys.signUpURL
     private let loginUserURL = Keys.loginUserURL
-        
+    private let updateUserURL = Keys.updateUserURL
+    
     static var shared = UserController()
     static let keychain = KeychainSwift()
     
@@ -144,53 +145,63 @@ class UserController{
             
         }
         
+        let currentUsername = UserController.keychain.get("username")
+        let currentPassword = UserController.keychain.get("password")
+        let currentPhonenumber = UserController.keychain.get("phonenumber")
+        
         print(UserController.keychain.get("username"))
+//        var updatedUser = UserRepresentation(username: currentUsername!, password: currentPassword!, phoneNumber: currentPhonenumber!)
         
+       // updateUserOnServer(user: updatedUser, completion: { _ in })
+        
+        
+        
+
+        
+        
+       
     
-    
-    
-//    func getUserPlants( completion: @escaping ([PlantRepresentation]?, Error?) -> Void) {
-//        guard let token = authToken?.token else {
-//            DispatchQueue.main.async { completion(nil, NSError()) }
-//            return
-//
-//        }
-//
-//        guard let userId = userID?.id else { return }
-//
-//        let userPlantsURL = baseURL.appendingPathComponent("/plants/user/\(userId)")
-//
-//        var request = URLRequest(url: userPlantsURL)
-//              request.httpMethod = HTTPMethod.get.rawValue
-//              request.addValue(token, forHTTPHeaderField: "Authorization")
-//              URLSession.shared.dataTask(with: request) { data, _, error in
-//                  if let _ = error {
-//                      print("Error")
-//                    DispatchQueue.main.async { completion(nil, error) }
-//                      return
-//                  }
-//                  guard let data = data else {
-//                      print("Bad Data")
-//                      return
-//                  }
-//                  let decoder = JSONDecoder()
-//                  decoder.keyDecodingStrategy = .convertFromSnakeCase
-//                  do {
-//                      let userPlants = try decoder.decode([PlantRepresentation].self, from: data)
-//                    DispatchQueue.main.async { completion(userPlants, nil) }
-//
-//                  } catch {
-//                      print("Error decoding")
-//                    DispatchQueue.main.async { completion(nil, error) }
-//                  }
-//              }.resume()
-//          }
+
     }
+       
+    func updateUserOnServer(user:UserRepresentation, completion: @escaping (Error?) -> ()) {
+        var request = URLRequest(url: updateUserURL)
         
+        request.httpMethod = HTTPMethod.put.rawValue
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let jsonEncoder = JSONEncoder()
+        do {
+            let jsonData = try jsonEncoder.encode(user)
+            request.httpBody = jsonData
+        } catch {
+            print("Error encoding user object: \(error)")
+            completion(error)
+            return
+        }
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if let response = response as? HTTPURLResponse,
+                response.statusCode != 201 {
+                completion(NSError(domain: "", code: response.statusCode, userInfo:nil))
+                return
+            }
+            
+            if let error = error {
+                DispatchQueue.main.async { completion(error) }
+                return
+            }
+            guard let data = data else {
+                DispatchQueue.main.async { completion(NSError()) }
+                return
+            }
+        
+    }.resume()
     
     
     
     
     
+
+}
 
 }
